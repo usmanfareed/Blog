@@ -146,9 +146,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Areas\BlogSite\Views\web.config" />
     <Content Include="Areas\AdminPanel\Views\web.config" />
     <None Include="Web.Debug.config">
