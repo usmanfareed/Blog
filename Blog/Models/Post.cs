@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Blog.Models
 {
-    public class BlogPost
+    public class Post
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -19,7 +19,7 @@ namespace Blog.Models
         public string SourceCode { get; set; }
         public int UserId { get; set; }
 
-        public List<BlogComment> Comments { get; set; }
-        public List<BlogTag> Tags { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

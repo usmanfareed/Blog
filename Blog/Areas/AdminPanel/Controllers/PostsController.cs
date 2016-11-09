@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Blog.Controllers
+namespace Blog.Areas.AdminPanel.Controllers
 {
-    public class HomeController : Controller
+    public class PostsController : Controller
     {
-        // GET: Home
+        // GET: AdminPanel/Posts
         public ActionResult Index()
         {
-            return View ();
+            return View();
         }
     }
 }

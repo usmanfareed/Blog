@@ -213,6 +213,7 @@
     <Content Include="Areas\AdminPanel\Assets\lineicons\style.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\colors\orange.css" />
+    <Content Include="Assets\css\customstyle.css" />
     <Content Include="Assets\css\font-awesome\4.5.0\css\font-awesome.min.css" />
     <Content Include="Assets\css\layout.css" />
     <Content Include="Assets\css\owl-carousel\AjaxLoader.gif" />
@@ -235,6 +236,8 @@
     <Content Include="Assets\images\girl-711087.jpg" />
     <Content Include="Assets\images\instagram-avatar.jpg" />
     <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\pblogo.png" />
+    <Content Include="Assets\images\pblogo2.png" />
     <Content Include="Assets\images\sunglasses-635269.jpg" />
     <Content Include="Assets\images\woman-1129248.jpg" />
     <Content Include="Assets\images\young-woman-635249.jpg" />
@@ -389,14 +392,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\HomeController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\PostsController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\UsersController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611091607318_Initial Migration.cs" />
+    <Compile Include="Migrations\201611091607318_Initial Migration.Designer.cs">
+      <DependentUpon>201611091607318_Initial Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlogDbContext.cs" />
-    <Compile Include="Models\BlogPost.cs" />
-    <Compile Include="Models\BlogComment.cs" />
-    <Compile Include="Models\BlogTag.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -469,10 +480,18 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminPanel\Models\" />
+    <Folder Include="Areas\AdminPanel\Views\Posts\" />
+    <Folder Include="Areas\AdminPanel\Views\Users\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611091607318_Initial Migration.resx">
+      <DependentUpon>201611091607318_Initial Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
