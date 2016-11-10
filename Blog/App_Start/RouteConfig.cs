@@ -14,10 +14,14 @@ namespace Blog
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            var namespaces = new[] { typeof(HomeController).Namespace };
 
-            routes.MapRoute("Default","{controller}/{action}/{id}",new { controller = "Home", action = "Index", id = UrlParameter.Optional  }, namespaces
-            );
+            routes.MapMvcAttributeRoutes();
+            AreaRegistration.RegisterAllAreas();
+
+            //var namespaces = new[] { typeof(HomeController).Namespace };
+
+            //routes.MapRoute("Default","{controller}/{action}/{id}",new { controller = "Home", action = "Index", id = UrlParameter.Optional  }, namespaces
+            //);
         }
     }
 }

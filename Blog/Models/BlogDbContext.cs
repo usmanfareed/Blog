@@ -7,11 +7,6 @@ namespace Blog.Models
     
     {
 
-        //public BlogDbContext():base("BlogDatabase")
-        //{
-            
-        //}
-
 
         public DbSet<Comment>Comment { get; set; }
         public DbSet<Post>Post { get; set; }

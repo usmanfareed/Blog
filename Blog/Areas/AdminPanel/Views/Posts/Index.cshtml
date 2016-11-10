@@ -1,0 +1,63 @@
+﻿@model  Blog.Areas.AdminPanel.ViewModels.PostViewModel
+
+<h3 class="col h3">Create Post</h3>
+
+@using (Html.BeginForm("CreatePost", "Posts", FormMethod.Post, new { @class = "form-panel" }))
+{
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(x => x.Post.Title)
+            @Html.TextBoxFor(x => x.Post.Title, new { @class = "form-control" })
+
+
+        </div>
+       
+        <div class="form-group">
+            
+            @Html.LabelFor(x => x.Post.Slug)
+            @Html.TextBoxFor(x => x.Post.Slug, new { @class = "form-control" })
+
+
+        </div>
+        
+
+        <div class="form-group">
+            
+            @Html.LabelFor(x => x.Post.Content)
+            @Html.TextBoxFor(x => x.Post.Content, new { @class = "form-control" })
+
+
+        </div>
+        
+        
+        <div class="form-group">
+            <div class="col-sm-5"></div>
+            <a class="btn btn-default btn-primary">Create Form</a>
+            <a class="btn btn-default btn-danger">Cancel</a>
+
+        </div>
+
+
+
+    </div>
+}
+
+
+<script src="@Url.Content("~/Areas/AdminPanel/Assets/ckeditor/ckeditor.js")"></script>
+
+<script>
+    CKEDITOR.replace('Post_Content', {
+        filebrowserImageBrowseUrl: '/adminpanel/posts/uploadpartial',
+        filebrowserImageUploadUrl: '/adminpanel/posts/uploadnow'
+    });
+
+
+
+    function updateValue(url) {
+        var dialog = CKEDITOR.dialog.getCurrent();
+        dialog.setValueOf('info', 'txtUrl', url);
+    }
+    
+</script>
+
+

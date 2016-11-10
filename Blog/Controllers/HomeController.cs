@@ -6,9 +6,11 @@ using System.Web.Mvc;
 
 namespace Blog.Controllers
 {
+    [RoutePrefix("Home")]
     public class HomeController : Controller
     {
-        // GET: Home
+        [Route("~/")]
+        [Route("")]
         public ActionResult Index()
         {
             return View ();

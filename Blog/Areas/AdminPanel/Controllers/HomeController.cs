@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace Blog.Areas.AdminPanel.Controllers
 {
+    [RouteArea("AdminPanel")]
     public class HomeController : Controller
     {
-        // GET: AdminPanel/Home
+        [Route("")]
         public ActionResult Index()
         {
             return View();
