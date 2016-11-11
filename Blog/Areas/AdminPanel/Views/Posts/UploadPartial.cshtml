@@ -1,24 +1,63 @@
 ﻿@{
     Layout = null;
-}
+   
+ }
+@model IEnumerable<Blog.Areas.AdminPanel.ViewModels.ImagePostViewModel>  
 
-@foreach (var image in Model.Url)
+@foreach (var image in Model)
 {
-    <a href="#" class="returnImage" data-url="@Request.Url.GetLeftPart(UriPartial.Authority)@image.Url">
-        <img src="@image.Url" alt="Hejsan" id="#image" data-source="@image.Url" width="200" height="200" />
-    </a>
+    <div class="form-panel col-md-2">
+        
+        <div id="image" class="form-group">
+            
+            <a href="#" class="returnImage" data-url="@Request.Url.GetLeftPart(UriPartial.Authority)@image.Url">
+                <img src="@image.Url" alt="Hejsan" id="#image" data-source="@image.Url" width="200" height="200" />
+            </a>
+
+        </div >
+       
+        <div id="deleteDiv" class="form-group">
+            
+            <button class="delteimg btn btn-danger btn-group-lg" value="@image.Url">Delete</button>
+
+
+        </div>
+
+        
+    </div>
+   
 }
 
 
 <script src="@Url.Content("~/Areas/AdminPanel/Assets/js/jquery.js")"></script>
 
+<link href="@Url.Content("~/Areas/AdminPanel/Assets/css/bootstrap.css")" rel="stylesheet"/>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
         $(".returnImage").click("click", function (e) {
-            var urlImage = $(this).attr("data-url");
+            var urlImage = $(this).attr("val");
             window.opener.updateValue(urlImage);
             window.close();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".delteimg").click("click", function (e) {
+            var urlImage = $(this).val();
+            $.post("deleteimg",
+                
+            {
+                url:urlImage
+            },
+                function(message) {
+                    alert(message);
+                    location.reload();
+                });
+            
         });
     });
 </script>

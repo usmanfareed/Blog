@@ -1,4 +1,4 @@
-﻿@model  Blog.Areas.AdminPanel.ViewModels.PostViewModel
+﻿@model  Blog.Models.Post
 
 <h3 class="col h3">Create Post</h3>
 
@@ -6,16 +6,16 @@
 {
     <div class="form-group">
         <div class="form-group">
-            @Html.LabelFor(x => x.Post.Title)
-            @Html.TextBoxFor(x => x.Post.Title, new { @class = "form-control" })
+            @Html.LabelFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
 
 
         </div>
        
         <div class="form-group">
             
-            @Html.LabelFor(x => x.Post.Slug)
-            @Html.TextBoxFor(x => x.Post.Slug, new { @class = "form-control" })
+            @Html.LabelFor(x => x.Slug)
+            @Html.TextBoxFor(x => x.Slug, new { @class = "form-control" })
 
 
         </div>
@@ -23,8 +23,8 @@
 
         <div class="form-group">
             
-            @Html.LabelFor(x => x.Post.Content)
-            @Html.TextBoxFor(x => x.Post.Content, new { @class = "form-control" })
+            @Html.LabelFor(x => x.Content)
+            @Html.TextBoxFor(x => x.Content, new { @class = "form-control" })
 
 
         </div>
@@ -46,7 +46,7 @@
 <script src="@Url.Content("~/Areas/AdminPanel/Assets/ckeditor/ckeditor.js")"></script>
 
 <script>
-    CKEDITOR.replace('Post_Content', {
+    CKEDITOR.replace('Content', {
         filebrowserImageBrowseUrl: '/adminpanel/posts/uploadpartial',
         filebrowserImageUploadUrl: '/adminpanel/posts/uploadnow'
     });

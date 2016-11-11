@@ -11,7 +11,6 @@ namespace Blog.Models
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Content { get; set; }
-        public string Url { get; set; }
         public bool EnableComments { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }

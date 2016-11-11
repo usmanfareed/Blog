@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Blog.Areas.AdminPanel.ViewModels;
 using Blog.Models;
 
@@ -26,7 +27,7 @@ namespace Blog.Areas.AdminPanel.Controllers
             return Content("Success");
         }
 
-       
+
         [Route("uploadnow")]
 
         public void UploadNow(HttpPostedFileWrapper upload)
@@ -34,7 +35,7 @@ namespace Blog.Areas.AdminPanel.Controllers
             if (upload != null)
             {
                 string imageName = upload.FileName;
-                string path = Path.Combine(Server.MapPath("~/Images/Uploads"),imageName);
+                string path = Path.Combine(Server.MapPath("~/Images/Uploads"), imageName);
                 upload.SaveAs(path);
 
             }
@@ -46,13 +47,36 @@ namespace Blog.Areas.AdminPanel.Controllers
         {
             var appData = Server.MapPath("~/Images/uploads");
 
-            var images = new PostViewModel();
-            images.Url = Directory.GetFiles(appData).Select(x => new ImagePostViewModel()
+            IEnumerable<ImagePostViewModel> images = Directory.GetFiles(appData).Select(x => new ImagePostViewModel()
             {
                 Url = Url.Content("/Images/Uploads/" + Path.GetFileName(x))
             });
 
             return View(images);
         }
+
+
+
+        [Route("deleteimg")]
+        [HttpPost]
+        public ActionResult DeleteImage(string url)
+        {
+            try
+            {
+                FileInfo image = new FileInfo(Server.MapPath(url));
+                image.Delete();
+
+                return Content("success");
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+        }
+
+
+
     }
 }
