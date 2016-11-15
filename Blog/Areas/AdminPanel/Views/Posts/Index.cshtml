@@ -1,9 +1,11 @@
-﻿@model  Blog.Models.Post
+﻿@using System.Web.UI.WebControls
+@model  Blog.Model.Post
 
 <h3 class="col h3">Create Post</h3>
 
 @using (Html.BeginForm("CreatePost", "Posts", FormMethod.Post, new { @class = "form-panel" }))
 {
+    @Html.ValidationSummary()
     <div class="form-group">
         <div class="form-group">
             @Html.LabelFor(x => x.Title)
@@ -24,7 +26,7 @@
         <div class="form-group">
             
             @Html.LabelFor(x => x.Content)
-            @Html.TextBoxFor(x => x.Content, new { @class = "form-control" })
+            @Html.TextAreaFor(x => x.Content, new { @class = "form-control" })
 
 
         </div>
@@ -32,8 +34,8 @@
         
         <div class="form-group">
             <div class="col-sm-5"></div>
-            <a class="btn btn-default btn-primary">Create Form</a>
-            <a class="btn btn-default btn-danger">Cancel</a>
+            <button class="btn btn-default btn-primary" type="submit">Create Form</button>
+            <button class="btn btn-default btn-danger">Cancel</button>
 
         </div>
 

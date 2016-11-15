@@ -22,9 +22,10 @@ namespace Blog.Areas.AdminPanel.Controllers
         }
 
         [Route("CreatePost")]
+        [ValidateInput(false)]
         public ActionResult CreatePost(Post post)
         {
-            return Content("Success");
+            return View("Index");
         }
 
 

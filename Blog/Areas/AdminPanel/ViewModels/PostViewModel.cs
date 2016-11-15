@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Blog.Models;
+﻿using Blog.Models;
+using System.Collections.Generic;
 
 namespace Blog.Areas.AdminPanel.ViewModels
 {

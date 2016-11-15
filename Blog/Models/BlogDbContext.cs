@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Blog.Models;
 
 namespace Blog.Models
 {
