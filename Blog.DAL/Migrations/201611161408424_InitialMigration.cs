@@ -1,4 +1,4 @@
-namespace Blog.Migrations
+namespace Blog.DAL.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -24,15 +24,15 @@ namespace Blog.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Text = c.String(),
-                        Image = c.String(),
+                        Title = c.String(nullable: false),
+                        Slug = c.String(nullable: false),
+                        Content = c.String(),
                         EnableComments = c.Boolean(nullable: false),
-                        CreatedOn = c.DateTime(nullable: false),
-                        DeletedData = c.String(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        DeletedAt = c.DateTime(),
+                        UpdatedAt = c.DateTime(),
                         Active = c.Boolean(nullable: false),
                         Views = c.Int(nullable: false),
-                        SourceCode = c.String(),
                         UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

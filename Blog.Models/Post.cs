@@ -23,5 +23,16 @@ namespace Blog.Models
 
         public List<Comment> Comments { get; set; }
         public List<Tag> Tags { get; set; }
+
+
+
+        public Post()
+        {
+            CreatedAt = DateTime.Now;
+            Active = true;
+            EnableComments = true;
+        }
     }
+
+   
 }

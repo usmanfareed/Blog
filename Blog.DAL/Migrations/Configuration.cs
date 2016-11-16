@@ -1,18 +1,18 @@
-namespace Blog.Migrations
+namespace Blog.DAL.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Blog.Models.BlogDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Blog.DAL.Data.BlogDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Blog.Models.BlogDbContext context)
+        protected override void Seed(Blog.DAL.Data.BlogDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Blog.Areas.AdminPanel.ViewModels;
+using Blog.DAL.Data;
+using Blog.DAL.Repositories;
 using Blog.Models;
 
 namespace Blog.Areas.AdminPanel.Controllers
@@ -14,6 +16,11 @@ namespace Blog.Areas.AdminPanel.Controllers
     [RoutePrefix("Posts")]
     public class PostsController : Controller
     {
+
+        private readonly PostRepository _post = new PostRepository(new BlogDbContext());
+
+
+
         [Route("")]
         // GET: AdminPanel/Posts
         public ActionResult Index()
@@ -23,8 +30,12 @@ namespace Blog.Areas.AdminPanel.Controllers
 
         [Route("CreatePost")]
         [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult CreatePost(Post post)
         {
+           
+            _post.Insert(post);
+            _post.Commit();
             return View("Index");
         }
 
