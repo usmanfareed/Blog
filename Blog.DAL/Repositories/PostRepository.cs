@@ -26,5 +26,6 @@ namespace Blog.DAL.Repositories
         {
             return db.Post.Any(x => x.Title == title);
         }
+       
     }
 }

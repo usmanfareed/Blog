@@ -4,9 +4,7 @@
 <h3 class="col h3">Create Post</h3>
 @if (!string.IsNullOrEmpty(ViewBag.message))
 {
-    @*<div class="alert alert-danger"><b>@ViewBag.message</b></div>*@
-
-    @*<a id="add-without-image" class="btn btn-info  btn-sm" href="javascript:;">Imageless</a>*@
+    
 
 
 @section Scripts
@@ -22,50 +20,69 @@
    
 
 }
+@{
+    string action = ViewBag.IsNew ? "createpost" : "update";
+    string button = ViewBag.IsNew ? "Create" : "Update";
 
-@using (Html.BeginForm("CreatePost", "Posts", FormMethod.Post, new {@class = "form-panel"}))
-{
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        <div class="form-group">
-            @Html.LabelFor(x => x.Title)
-            @Html.TextBoxFor(x => x.Title, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.Title)
+} 
 
-        </div>
+@*@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-panel" }))*@
 
-        <div class="form-group">
-
-            @Html.LabelFor(x => x.Slug)
-            @Html.TextBoxFor(x => x.Slug, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.Slug)
+<form class="form-panel" action=@Url.Action(action)   method="post">
 
 
-        </div>
 
-
-        <div class="form-group">
-
-            @Html.LabelFor(x => x.Content)
-            @Html.ValidationMessageFor(x => x.Content)
-            @Html.TextAreaFor(x => x.Content, new {@class = "form-control"})
-
-
-        </div>
+    @{
+        @Html.AntiForgeryToken()
+        if (!ViewBag.IsNew)
+         {
+             @Html.HiddenFor(x=>x.Id)
+             @Html.HiddenFor(x=>x.IsActive)
+         }
 
 
         <div class="form-group">
-            <div class="col-sm-5"></div>
-            <button class="btn btn-default btn-primary" type="submit">Create Form</button>
-            <button class="btn btn-default btn-warning" type="reset">Reset</button>
-            <button class="btn btn-default btn-danger">Cancel</button>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Title)
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Title)
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(x => x.Slug)
+                @Html.TextBoxFor(x => x.Slug, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Slug)
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(x => x.Content)
+                @Html.ValidationMessageFor(x => x.Content)
+                @Html.TextAreaFor(x => x.Content, new { @class = "form-control" })
+
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+
+
+                <button class="btn btn-default btn-primary" type="submit">@button Form</button>
+                <button class="btn btn-default btn-warning" type="reset">Reset</button>
+                <button href="@Url.Action("Posts")" class="btn btn-default btn-danger">Cancel</button>
+
+            </div>
+
 
         </div>
-
-
-    </div>
-}
-
+    }
+</form>
 
 <script src="@Url.Content("~/Areas/AdminPanel/Assets/ckeditor/ckeditor.js")"></script>
 

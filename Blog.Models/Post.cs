@@ -17,7 +17,7 @@ namespace Blog.Models
         public DateTime CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public bool Active { get; set; }
+        public bool IsActive { get; set; }
         public int Views { get; set; }
         public int UserId { get; set; }
 
@@ -29,7 +29,7 @@ namespace Blog.Models
         public Post()
         {
             CreatedAt = DateTime.Now;
-            Active = true;
+            IsActive = true;
             EnableComments = true;
         }
     }

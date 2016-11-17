@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201611161408424_InitialMigration.Designer.cs">
       <DependentUpon>201611161408424_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611171852397_ChangeAvtiveToIsActive.cs" />
+    <Compile Include="Migrations\201611171852397_ChangeAvtiveToIsActive.Designer.cs">
+      <DependentUpon>201611171852397_ChangeAvtiveToIsActive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
@@ -75,6 +79,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611161408424_InitialMigration.resx">
       <DependentUpon>201611161408424_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611171852397_ChangeAvtiveToIsActive.resx">
+      <DependentUpon>201611171852397_ChangeAvtiveToIsActive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
