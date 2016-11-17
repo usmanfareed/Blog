@@ -8,14 +8,23 @@ using Blog.Models;
 
 namespace Blog.DAL.Repositories
 {
-    public class PostRepository :RepositoryBase<Post>
+    public class PostRepository : RepositoryBase<Post>
     {
         public PostRepository(BlogDbContext context) : base(context)
         {
+           
             if (context == null)
             {
                 throw new ArgumentNullException();
             }
+        }
+
+        private BlogDbContext db = new BlogDbContext();
+        
+
+        public bool IsExist(string title)
+        {
+            return db.Post.Any(x => x.Title == title);
         }
     }
 }
