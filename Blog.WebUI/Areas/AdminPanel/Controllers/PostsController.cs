@@ -1,31 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
-using AutoMapper;
 using Blog.Areas.AdminPanel.ViewModels;
 using Blog.DAL.Data;
 using Blog.DAL.Repositories;
+using Blog.Interfaces.IRepository;
 using Blog.Models;
+using Blog.WebUI.App_Start;
 
-namespace Blog.Areas.AdminPanel.Controllers
+
+namespace Blog.WebUI.Areas.AdminPanel.Controllers
 {
     [RouteArea("AdminPanel")]
     [RoutePrefix("Posts")]
     public class PostsController : Controller
     {
+        private readonly IRepositoryBase<Post> _repositoryBase;
+        private readonly IPostRepository _postRepository;
 
-        private readonly PostRepository _post = new PostRepository(new BlogDbContext());
+        public PostsController(IRepositoryBase<Post> post,IPostRepository postRepository  )
+        {
+            this._repositoryBase = post;
+            this._postRepository = postRepository;
+        }
+        //private readonly IPostRepository _postRepository = AutoFacConfig.Container.Resolve<IPostRepository>();
+        //private readonly IRepositoryBase<Post> _repositoryBase = AutoFacConfig.Container.Resolve<IRepositoryBase<Post>>();
 
+        //_repositoryBase = new PostRepository(new BlogDbContext());
+         //IRepositoryBase<Post> _repositoryBase = new PostRepository(new BlogDbContext());
 
-
+        
+             
         [Route("create")]
         // GET: AdminPanel/Posts
         public ActionResult Index()
         {
+            
             ViewBag.IsNew = true;
             return View();
         }
@@ -37,7 +51,7 @@ namespace Blog.Areas.AdminPanel.Controllers
         public ActionResult CreatePost(Post post)
         {
 
-            if ( _post.IsExist(post.Title) )
+            if ( _postRepository.IsExist(post.Title) )
             {
                 ViewBag.title = "Fail";
                 ViewBag.message = "Post of this title already exists";
@@ -47,8 +61,8 @@ namespace Blog.Areas.AdminPanel.Controllers
 
             }
 
-            _post.Insert(post);
-            _post.Commit();
+            _repositoryBase.Insert(post);
+            _repositoryBase.Commit();
  
             return RedirectToAction("Posts");
         }
@@ -60,7 +74,7 @@ namespace Blog.Areas.AdminPanel.Controllers
         public ActionResult Posts()
         {
 
-           var posts = _post.GetAll();
+           var posts = _repositoryBase.GetAll();
             return View("Posts",posts);
         }
 
@@ -70,8 +84,8 @@ namespace Blog.Areas.AdminPanel.Controllers
 
         public ActionResult Delete(int id)
         {
-           _post.Delete(id);
-            _post.Commit();
+           _repositoryBase.Delete(id);
+            _repositoryBase.Commit();
            return RedirectToAction("Posts");
         }
 
@@ -82,10 +96,10 @@ namespace Blog.Areas.AdminPanel.Controllers
         public ActionResult Status(int id,bool status)
         {
 
-            var update = _post.GetById(id);
+            var update = _repositoryBase.GetById(id);
             update.IsActive = status;
-           _post.Update(update);
-            _post.Commit();
+           _repositoryBase.Update(update);
+            _repositoryBase.Commit();
            return RedirectToAction("Posts");
         }
 
@@ -97,7 +111,7 @@ namespace Blog.Areas.AdminPanel.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.IsNew = false;
-            var post = _post.GetById(id);
+            var post = _repositoryBase.GetById(id);
             return View("Index",post);
         }
          
@@ -106,12 +120,12 @@ namespace Blog.Areas.AdminPanel.Controllers
         public ActionResult Update(Post post)
         {
             //dont use find when using auto mapper
-           //var updatePost = _post.GetById(post.Id);
+           //var updatePost = _repositoryBase.GetById(post.Id);
 
-           var updatePost =  new Post();
-           updatePost = Mapper.Map(post, updatePost);
-            _post.Update(updatePost);
-            _post.Commit();
+           //var updatePost =  new Post();
+           //updatePost = Mapper.Map(post, updatePost);
+            _repositoryBase.Update(post);
+            _repositoryBase.Commit();
             return RedirectToAction("Posts");
         }
 

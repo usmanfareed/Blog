@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.DAL.Data;
+using Blog.Interfaces.IRepository;
 
 namespace Blog.DAL.Repositories
 {
-    public class RepositoryBase<TEntity> where TEntity: class
+   
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity: class
     {
 
         private readonly BlogDbContext _context;

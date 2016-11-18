@@ -17,6 +17,7 @@
                 <tr>
                     <th> Title </th>
                     <th> Created Date</th>
+                    <th> Updated Date</th>
                     <th> Status</th>
                     <th> Action</th>
                 </tr>
@@ -27,7 +28,19 @@
                 {
                     <tr>
                         <td><a href="#">@post.Title</a></td>
-                        <td class="hidden-phone">@post.CreatedAt</td>
+                        <td class="hidden-phone">@post.CreatedAt.ToString("F")</td>
+                        <td class="hidden-phone">
+                            @if (post.UpdatedAt != null)
+                            {
+                                @post.UpdatedAt.Value.ToString("F")
+                            }
+                            else
+                            {
+                               @Html.Raw("Never Updated")
+                                
+                            }
+                        </td>
+                       
 
                         @if (post.IsActive)
                         {
@@ -41,7 +54,7 @@
 
                         <td>
                             <a href="@Url.Action("Edit",new {post.Id} )" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
-                            <a  href="@Url.Action("Delete",new {post.Id} )" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i>&nbsp;Delete</a>
+                            <a href="@Url.Action("Delete",new {post.Id} )" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i>&nbsp;Delete</a>
                         </td>
                     </tr>
                 }

@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201611171852397_ChangeAvtiveToIsActive.Designer.cs">
       <DependentUpon>201611171852397_ChangeAvtiveToIsActive.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611180613195_RemovedDeletedAt.cs" />
+    <Compile Include="Migrations\201611180613195_RemovedDeletedAt.Designer.cs">
+      <DependentUpon>201611180613195_RemovedDeletedAt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
@@ -70,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Interfaces\Blog.Interfaces.csproj">
+      <Project>{BE97032E-3F38-4F89-847C-2EEF16644DB9}</Project>
+      <Name>Blog.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Models\Blog.Models.csproj">
       <Project>{7048B7CD-A8EF-4E2E-A7A6-226F941CD3C8}</Project>
       <Name>Blog.Models</Name>
@@ -82,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611171852397_ChangeAvtiveToIsActive.resx">
       <DependentUpon>201611171852397_ChangeAvtiveToIsActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611180613195_RemovedDeletedAt.resx">
+      <DependentUpon>201611180613195_RemovedDeletedAt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

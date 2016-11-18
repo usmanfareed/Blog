@@ -1,4 +1,5 @@
-﻿@using System.Web.UI.WebControls
+﻿@using System.Globalization
+@using System.Web.UI.WebControls
 @model Blog.Models.Post
 
 <h3 class="col h3">Create Post</h3>
@@ -38,6 +39,9 @@
          {
              @Html.HiddenFor(x=>x.Id)
              @Html.HiddenFor(x=>x.IsActive)
+             @Html.HiddenFor(x=>x.Views)
+             @Html.HiddenFor(x=>x.CreatedAt)
+             @Html.HiddenFor( x=>x.UpdatedAt,new { Value = DateTime.Now.ToString("F")})
          }
 
 
