@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Blog.Areas.AdminPanel.Controllers
+namespace Blog.WebUI.Areas.AdminPanel.Controllers
 {
     [RouteArea("AdminPanel")]
     public class HomeController : Controller

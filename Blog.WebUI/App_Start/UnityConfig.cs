@@ -39,9 +39,12 @@ namespace Blog.WebUI.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            // container.RegisterType<IProductRepository, ProductRepository>();s
              container.RegisterType<IRepositoryBase<Post>, RepositoryBase<Post>>();
+             container.RegisterType<IRepositoryBase<User>, RepositoryBase<User>>();
+             container.RegisterType<IRepositoryBase<Role>, RepositoryBase<Role>>();
              container.RegisterType<IPostRepository, PostRepository>();
+             container.RegisterType<IUserRepository, UserRepository>();
         }
     }
 }

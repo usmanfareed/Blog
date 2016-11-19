@@ -11,7 +11,7 @@ namespace Blog.Models
         public DateTime CreatedOn { get; set; }
         public bool Active { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
 
     }
 }

@@ -42,7 +42,14 @@
   <ItemGroup>
     <Compile Include="IRepository\IPostRepository.cs" />
     <Compile Include="IRepository\IRepositoryBase.cs" />
+    <Compile Include="IRepository\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Models\Blog.Models.csproj">
+      <Project>{7048b7cd-a8ef-4e2e-a7a6-226f941cd3c8}</Project>
+      <Name>Blog.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

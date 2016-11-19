@@ -1,3 +1,5 @@
+using Blog.Models;
+
 namespace Blog.DAL.Migrations
 {
     using System;
@@ -26,6 +28,12 @@ namespace Blog.DAL.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Roles.AddOrUpdate(
+                x=>x.Id,
+                new Role {Id = 1,Name = "Admin"},
+                new Role {Id = 2,Name = "Moderator"},
+                new Role {Id = 3,Name = "User"});
         }
     }
 }

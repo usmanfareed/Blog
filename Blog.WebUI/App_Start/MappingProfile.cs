@@ -12,6 +12,7 @@ namespace Blog.WebUI.App_Start
         public MappingProfile()
         {
             Mapper.Initialize(x=>x.CreateMap<Post,Post>());
+            Mapper.Initialize(x=>x.CreateMap<User,User>());
         }
     }
 }

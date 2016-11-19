@@ -28,10 +28,10 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             this._postRepository = postRepository;
         }
         //private readonly IPostRepository _postRepository = AutoFacConfig.Container.Resolve<IPostRepository>();
-        //private readonly IRepositoryBase<Post> _repositoryBase = AutoFacConfig.Container.Resolve<IRepositoryBase<Post>>();
+        //private readonly IRepositoryBase<Posts> _repositoryBase = AutoFacConfig.Container.Resolve<IRepositoryBase<Posts>>();
 
         //_repositoryBase = new PostRepository(new BlogDbContext());
-         //IRepositoryBase<Post> _repositoryBase = new PostRepository(new BlogDbContext());
+         //IRepositoryBase<Posts> _repositoryBase = new PostRepository(new BlogDbContext());
 
         
              
@@ -50,11 +50,15 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         
         public ActionResult CreatePost(Post post)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Index",post);
+            }
 
             if ( _postRepository.IsExist(post.Title) )
             {
                 ViewBag.title = "Fail";
-                ViewBag.message = "Post of this title already exists";
+                ViewBag.message = "Posts of this title already exists";
                
                 return View("Index");
 
@@ -122,7 +126,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             //dont use find when using auto mapper
            //var updatePost = _repositoryBase.GetById(post.Id);
 
-           //var updatePost =  new Post();
+           //var updatePost =  new Posts();
            //updatePost = Mapper.Map(post, updatePost);
             _repositoryBase.Update(post);
             _repositoryBase.Commit();

@@ -1,0 +1,150 @@
+﻿@using System.Globalization
+@using System.Web.UI.WebControls
+@model Blog.WebUI.Areas.AdminPanel.ViewModels.CreateUserVIewModel
+
+@if (!string.IsNullOrEmpty(ViewBag.message))
+{
+
+
+
+    @section Scripts
+    {
+        <script>
+
+               $(document).ready(function () {
+                alertbox("@ViewBag.title","@ViewBag.message");
+                });
+
+        </script>
+    }
+
+
+}
+@{
+    string action = ViewBag.IsNew ? "createuser" : "update";
+    string button = ViewBag.IsNew ? "Create" : "Update";
+    
+}
+
+<h3 class="col h3">@button User</h3>
+
+
+@*@using (Html.BeginForm(null, null, FormMethod.Posts, new { @class = "form-panel" }))*@
+
+<form class="form-panel" action=@Url.Action(action) method="post">
+
+
+
+    @{
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        if (!ViewBag.IsNew)
+        {
+            @Html.HiddenFor(x => x.Id)
+            
+        }
+
+
+        <div class="form-group">
+            <div class="form-group">
+                @Html.LabelFor(x => x.FullName)
+                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.FullName)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.UserName)
+                @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.UserName)
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(x => x.Email)
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Email)
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(x => x.Password)
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Password)
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(x => x.ConfirmPassword)
+                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ConfirmPassword)
+
+
+            </div>
+            <label for="roles">Roles</label>
+            <div id="roles" class="form-group">
+                <ul class="list-group">
+                    @for (int i = 0; i < Model.Roles.Count; i++)
+                    {
+                        <li class="list-group-item">
+                            
+                            @Html.Hidden("Roles[" + i + "].Id", Model.Roles[i].Id)
+                            @Html.Hidden("Roles["+ i +"].Name",Model.Roles[i].Name)
+                        
+                                @Html.CheckBox("Roles[" + i + "].IsChecked", Model.Roles[i].IsChecked)
+                                @Model.Roles[i].Name
+                          
+
+                        </li>
+
+                       
+                    }
+
+
+                </ul>
+        </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+
+
+                <button class="btn btn-default btn-primary" type="submit">@button User</button>
+                <button class="btn btn-default btn-warning" type="reset">Reset</button>
+                <button href="@Url.Action("")" class="btn btn-default btn-danger">Cancel</button>
+
+            </div>
+
+
+        </div>
+    }
+</form>
+
+
+
+
+<script>
+
+    function alertbox (title,msg) {
+
+        $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: title,
+            text: msg
+            // (string | mandatory) the text inside the notification
+        });
+
+        return false;
+    };
+
+
+</script>
+
+

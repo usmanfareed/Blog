@@ -17,6 +17,7 @@ namespace Blog.Interfaces.IRepository
             IQueryable<TEntity> GetAll(object filter);
             TEntity GetFullObject(object id);
             void Insert(TEntity entity);
+            void AddUpdate(TEntity entity);
             void Update(TEntity entity);
             void Delete(TEntity entity);
             void Delete(int id);

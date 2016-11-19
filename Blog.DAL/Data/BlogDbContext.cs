@@ -10,11 +10,13 @@ namespace Blog.DAL.Data
         public BlogDbContext()
             :base("BlogDatabase")
         {
-            
+
         }
 
-        public DbSet<Comment>Comment { get; set; }
-        public DbSet<Post>Post { get; set; }
-        public DbSet<Tag>Tag { get; set; }
+        public DbSet<Comment>Comments { get; set; }
+        public DbSet<Post>Posts { get; set; }
+        public DbSet<Tag>Tags { get; set; }
+        public DbSet<User>Users { get; set; }
+        public DbSet<Role>Roles { get; set; }
     }
 }

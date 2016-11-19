@@ -22,6 +22,15 @@ namespace Blog.DAL.Repositories
             _dbSet = context.Set<TEntity>();
         }
 
+
+
+        public virtual void AddUpdate(TEntity entity)
+        {
+            _dbSet.Attach(entity);
+            _dbSet.Add(entity);
+        }
+
+
         public virtual TEntity GetById(int id)
         {
             return _dbSet.Find(id);

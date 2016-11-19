@@ -25,7 +25,7 @@ namespace Blog.DAL.Repositories
 
         public bool IsExist(string title)
         {
-            return db.Post.Any(x => x.Title == title);
+            return db.Posts.Any(x => x.Title == title);
         }
        
     }
