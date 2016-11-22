@@ -6200,4 +6200,18 @@ button.close {
     display: none !important;
   }
 }
+
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+
+/* Css for Validation*/
+.field-validation-error
+{
+	color: red;
+}
+
+.validation-summary-errors
+{
+	color: Red;
+}

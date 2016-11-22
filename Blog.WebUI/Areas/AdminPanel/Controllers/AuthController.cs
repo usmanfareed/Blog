@@ -8,6 +8,7 @@ using Blog.DLL;
 using Blog.Interfaces.IRepository;
 using Blog.Models;
 using Blog.WebUI.Areas.AdminPanel.ViewModels;
+using Blog.WebUI.ViewModels;
 
 namespace Blog.WebUI.Areas.AdminPanel.Controllers
 {
@@ -223,6 +224,26 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
              return View("Index", user);
 
          }
+
+
+        [Route("login")]
+        public ActionResult Login(AuthViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("~/Views/Account/Index.cshtml",model);
+            }
+
+
+            var user =   _userRepository.LoginUser(model.Login.UserName);
+
+            if (HashPassword.CheckPassword(model.Login.Password , user.PasswordHash))
+            {
+               return  RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index","Account");
+        }
 
 
 

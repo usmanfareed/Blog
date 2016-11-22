@@ -10,5 +10,7 @@ namespace Blog.Interfaces.IRepository
         ICollection<User> GetUsers();
         User GetUserById(int id);
         void UpdateUser(User user);
+
+        User LoginUser(string username);
     }
 }

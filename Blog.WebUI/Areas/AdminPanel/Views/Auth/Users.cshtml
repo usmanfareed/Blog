@@ -16,6 +16,7 @@
                     <tr>
                         <th> User Name</th>
                         <th> Roles</th>
+                        <th> Created At</th>
                         <th> Last Login</th>
                         <th> Status</th>
                         <th> Action</th>
@@ -40,7 +41,7 @@
 
                                 }
                             </td>
-
+                           
                             
                             @* edit for showing online users *@
                             @*@if (user.)
@@ -52,7 +53,7 @@
                             {
                                 <td><a href="@Url.Action("Status", new {user.Id,status = true } )" class="btn btn-danger btn-xs"><i class="fa fa-lock"></i>&nbsp;Deactive</a></td>
                             }*@
-
+                            <td></td>
                             <td>
                                 <a href="@Url.Action("Edit",new {user.Id} )" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
                                 <a href="@Url.Action("Delete",new {user.Id} )" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i>&nbsp;Delete</a>

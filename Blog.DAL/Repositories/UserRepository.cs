@@ -64,5 +64,12 @@ namespace Blog.DAL.Repositories
            db.SaveChanges();
 
        }
+
+
+
+       public User LoginUser(string username)
+       {
+           return db.Users.SingleOrDefault(x => x.UserName == username);
+       }
     }
 }

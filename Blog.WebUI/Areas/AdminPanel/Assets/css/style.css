@@ -2240,14 +2240,5 @@ label {
 	min-height: 900px;
 }
 
-.field-validation-error
-{
-	color: red;
-}
-
-.validation-summary-errors
-{
-	color: Red;
-}
 
 
