@@ -12,5 +12,7 @@ namespace Blog.Interfaces.IRepository
         void UpdateUser(User user);
 
         User LoginUser(string username);
+
+        string[] UserRoles(string username);
     }
 }

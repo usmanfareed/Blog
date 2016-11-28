@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 using AutoMapper;
 using Blog.DAL.Data;
 using Blog.DLL;
@@ -239,7 +240,12 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
             if (HashPassword.CheckPassword(model.Login.Password , user.PasswordHash))
             {
-               return  RedirectToAction("Index");
+
+               var test = User.GetType();
+                FormsAuthentication.SetAuthCookie(user.UserName, false);
+
+
+                return RedirectToAction("Index");
             }
 
             return RedirectToAction("Index","Account");

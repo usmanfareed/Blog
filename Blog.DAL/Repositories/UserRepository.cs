@@ -71,5 +71,20 @@ namespace Blog.DAL.Repositories
        {
            return db.Users.SingleOrDefault(x => x.UserName == username);
        }
-    }
+
+
+       public string[] UserRoles(string username)
+       {
+
+            //string[] roles = db.Users
+            //    .Where(x => x.Id == x.Roles.Select(y => y.Id).SingleOrDefault())
+            //    .Select(x => x.Roles.Select(y => y.Name)).ToArray();
+
+            return db.Roles
+               .Where(x => x.Users.Any(y => y.UserName == username))
+               .Select(x => x.Name).ToArray();
+            ;
+
+        }
+     }
 }

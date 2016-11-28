@@ -15,6 +15,7 @@ using Blog.WebUI.App_Start;
 
 namespace Blog.WebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [RouteArea("AdminPanel")]
     [RoutePrefix("Posts")]
     public class PostsController : Controller
