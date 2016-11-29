@@ -2,6 +2,7 @@
 
 namespace Blog.WebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [RouteArea("AdminPanel")]
     public class HomeController : Controller
     {

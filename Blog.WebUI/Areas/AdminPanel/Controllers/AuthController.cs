@@ -13,6 +13,7 @@ using Blog.WebUI.ViewModels;
 
 namespace Blog.WebUI.Areas.AdminPanel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [RouteArea("AdminPanel")]
     [RoutePrefix("Users")]
     public class AuthController : Controller
@@ -42,25 +43,44 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                 Name = x.Name,
                 IsChecked = false
             }).ToList();
-            return View("Index",user);
+
+            var authViewMode = new AuthViewModel { Register = user };
+
+            return View("Index",authViewMode);
         }
 
         [Route("createuser")]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
 
-        public ActionResult CreateUser(CreateUserVIewModel user)
+        public ActionResult CreateUser(AuthViewModel userRegister, bool IsUserRegister)
         {
             ViewBag.IsNew = true;
             if (!ModelState.IsValid)
-            {
-                return View("Index", user);
+            {   
+                if (IsUserRegister)
+                {
+                    //return RedirectToAction("Index", "Account",new {area = "",user});
+                    return View("~/Views/Account/Index.cshtml", userRegister);
+                }
+                return View("Index", userRegister);
             }
 
 
-            if (_userRepository.IsExist(user.UserName))
+            if (_userRepository.IsExist(userRegister.Register.UserName))
             {
+
+
+
+                if (IsUserRegister)
+                {
+                    ModelState["Register.UserName"].Errors.Add("User already exists ");
+                    return View("~/Views/Account/Index.cshtml", userRegister);
+                }
+
                 ModelState["UserName"].Errors.Add("User already exists ");
-                return View("Index",user);
+
+                return View("Index",userRegister);
 
 
             }
@@ -70,52 +90,28 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             //    Name = x.Name
 
             //}).ToList();
-
             var newuser = new User
             {
-                FullName = user.FullName,
-                UserName = user.UserName,
-                Email = user.Email,
+                FullName = userRegister.Register.FullName,
+                UserName = userRegister.Register.UserName,
+                Email = userRegister.Register.Email,
                 CreatedAt = DateTime.Now,
-                PasswordHash = HashPassword.SetPassword(user.Password),
+                PasswordHash = HashPassword.SetPassword(userRegister.Register.Password),
+                Roles = userRegister.Register.Roles?.Where(x=>x.IsChecked).Select(x => new Role
+                        {
 
-                Roles = user.Roles.Where(x=>x.IsChecked).Select(x => new Role
-                {
-
-                    Id = x.Id,
-                    Name = x.Name
-                }).ToList()
+                            Id = x.Id,
+                            Name = x.Name
+                        }).ToList() ?? new List<Role> { new Role
+                        {
+                            Id = 3,
+                            Name = "User"
+                        } }
 
 
             };
 
-            //var data = db.Users
-            //    .Include("Roles")
-            //    .Single(x=>x.Id ==1);
-
-
-
-
-            //var roles = user.Roles.Select(x => new Role()
-            //{
-            //    Id = x.Id,
-            //    Name = x.Name
-
-            //}).ToList();
-
-            
-
-            //var roles = db.Roles.Select(x=>x).ToList();
-
-            //data.Roles.Clear();
-            ////_userRepositoryBase.Update(newuser);
-            //foreach (var role in roles)
-            //{
-            //    newuser.Roles.Add(role);
-            //}
-            //db.Users.Attach(newuser);
-            //db.Users.Add(newuser);
-            //db.SaveChanges();
+        
 
             _userRepositoryBase.AddUpdate(newuser);
             _userRepositoryBase.Commit();
@@ -144,7 +140,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
 
          [Route("update")]
-        public ActionResult Update(CreateUserVIewModel user)
+        public ActionResult Update(AuthViewModel user)
         {
             ViewBag.IsNew = false;
 
@@ -159,12 +155,12 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
             var newuser = new User
             {
-                Id = user.Id,
-                FullName = user.FullName,
-                UserName = user.UserName,
-                Email = user.Email,
-                PasswordHash = HashPassword.SetPassword(user.Password),
-                Roles = user.Roles.Where(x => x.IsChecked).Select(x => new Role
+                Id = user.Register.Id,
+                FullName = user.Register.FullName,
+                UserName = user.Register.UserName,
+                Email = user.Register.Email,
+                PasswordHash = HashPassword.SetPassword(user.Register.Password),
+                Roles = user.Register.Roles.Where(x => x.IsChecked).Select(x => new Role
                 {
 
                     Id = x.Id,
@@ -177,23 +173,6 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
 
             _userRepository.UpdateUser(newuser);
-
-
-            //newuser.Roles.Clear();
-
-            //var roles = user.Roles.Select(x => new Role()
-            //{
-            //    Id = x.Id,
-            //    Name = x.Name
-
-            //}).ToList();
-
-
-            //foreach (var role in roles)
-            //{
-            //    newuser.Roles.Add(role);
-            //}
-
             
             
             return RedirectToAction("Users");
@@ -222,11 +201,16 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                  }).ToList()
              };
 
-             return View("Index", user);
+             var authViewMode = new AuthViewModel {Register = user};
+
+             return View("Index", authViewMode);
 
          }
 
 
+
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         [Route("login")]
         public ActionResult Login(AuthViewModel model)
         {
@@ -241,8 +225,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             if (HashPassword.CheckPassword(model.Login.Password , user.PasswordHash))
             {
 
-               var test = User.GetType();
-                FormsAuthentication.SetAuthCookie(user.UserName, false);
+                FormsAuthentication.SetAuthCookie(user.UserName,false);
 
 
                 return RedirectToAction("Index");

@@ -1,6 +1,6 @@
 ﻿@using System.Globalization
 @using System.Web.UI.WebControls
-@model Blog.WebUI.Areas.AdminPanel.ViewModels.CreateUserVIewModel
+@model Blog.WebUI.ViewModels.AuthViewModel
 
 @if (!string.IsNullOrEmpty(ViewBag.message))
 {
@@ -40,41 +40,31 @@
         @Html.ValidationSummary(true)
         if (!ViewBag.IsNew)
         {
-            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.Register.Id)
             
         }
 
 
         <div class="form-group">
             <div class="form-group">
-                @Html.LabelFor(x => x.FullName)
-                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.FullName)
+                @Html.LabelFor(x => x.Register.FullName)
+                @Html.TextBoxFor(x => x.Register.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Register.FullName)
 
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(x => x.UserName)
-                @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.UserName)
+                @Html.LabelFor(x => x.Register.UserName)
+                @Html.TextBoxFor(x => x.Register.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Register.UserName)
 
             </div>
 
             <div class="form-group">
 
-                @Html.LabelFor(x => x.Email)
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.Email)
-
-
-            </div>
-
-
-            <div class="form-group">
-
-                @Html.LabelFor(x => x.Password)
-                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.Password)
+                @Html.LabelFor(x => x.Register.Email)
+                @Html.TextBoxFor(x => x.Register.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Register.Email)
 
 
             </div>
@@ -82,24 +72,34 @@
 
             <div class="form-group">
 
-                @Html.LabelFor(x => x.ConfirmPassword)
-                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                @Html.LabelFor(x => x.Register.Password)
+                @Html.PasswordFor(x => x.Register.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Register.Password)
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(x => x.Register.ConfirmPassword)
+                @Html.PasswordFor(x => x.Register.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Register.ConfirmPassword)
 
 
             </div>
             <label for="roles">Roles</label>
             <div id="roles" class="form-group">
                 <ul class="list-group">
-                    @for (int i = 0; i < Model.Roles.Count; i++)
+                    @for (int i = 0; i < Model.Register.Roles.Count; i++)
                     {
                         <li class="list-group-item">
                             
-                            @Html.Hidden("Roles[" + i + "].Id", Model.Roles[i].Id)
-                            @Html.Hidden("Roles["+ i +"].Name",Model.Roles[i].Name)
+                            @Html.Hidden("Register.Roles[" + i + "].Id", Model.Register.Roles[i].Id)
+                            @Html.Hidden("Register.Roles[" + i +"].Name",Model.Register.Roles[i].Name)
                         
-                                @Html.CheckBox("Roles[" + i + "].IsChecked", Model.Roles[i].IsChecked)
-                                @Model.Roles[i].Name
+                                @Html.CheckBox("Register.Roles[" + i + "].IsChecked", Model.Register.Roles[i].IsChecked)
+                                @Model.Register.Roles[i].Name
                           
 
                         </li>
