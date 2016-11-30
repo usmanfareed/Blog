@@ -236,7 +236,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
                 }
 
-                User.Identity.GetScreenName();
+                User.Identity.GetFullName();
 
                 return RedirectToAction("Index");
             }
@@ -244,7 +244,15 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             return RedirectToAction("Index","Account");
         }
 
-           
+        [Route("logout")]
+        [AllowAnonymous]
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home", new {area = ""});
+        }
 
     }
 }

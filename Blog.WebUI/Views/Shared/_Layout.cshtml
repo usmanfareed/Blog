@@ -2,7 +2,6 @@
 @using Microsoft.AspNet.Identity
 @{
     Layout = null;
-  
 }
 
 <!DOCTYPE html>
@@ -56,206 +55,211 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="head">
-                <header style="display: inline">
-                    <a href="index.html">
-                        <img src="@Url.Content("~/Assets/images/pblogo2.png")" width="200" height="120" alt="Inkwell logo">
+<div class="row">
+<div class="col-md-12">
+    <div class="head">
+        <header style="display: inline">
+            <a href="index.html">
+                <img src="@Url.Content("~/Assets/images/pblogo2.png")" width="200" height="120" alt="Inkwell logo">
+            </a>
+        </header>
+        <nav style="display: inline">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse cnavbar" id="bs-example-navbar-collapse-1">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="index.html">
+                            <h2>Home</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <h2>Contact</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="category.html">
+                            <h2>Category</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="post.html">
+                            <h2>Posts</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="404.html">
+                            <h2>404 page</h2>
+                        </a>
+                    </li>
+                    @{
+
+
+                        if (!User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Account")">
+                                    <h2>Login / Register</h2>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                @Html.Raw("Welcome  " + User.Identity.GetFullName())
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Auth", new {area = "AdminPanel"})">
+                                    <h2>LogOut</h2>
+
+                                </a>
+                            </li>
+
+                        }
+                    }
+
+
+                </ul>
+
+                <!-- Search for mobile -->
+                <div class="search  hidden-md hidden-lg">
+                    <input type="text" class="search-input" placeholder="SEARCH">
+                    <a href="#">
+                        <div class="search-btn">
+                            <i class="fa fa-search"></i>
+                        </div>
                     </a>
-                </header>
-                <nav style="display: inline">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse cnavbar" id="bs-example-navbar-collapse-1">
-                        <ul class="nav-menu">
-                            <li>
-                                <a href="index.html">
-                                    <h2>Home</h2>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contact.html">
-                                    <h2>Contact</h2>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="category.html">
-                                    <h2>Category</h2>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="post.html">
-                                    <h2>Posts</h2>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="404.html">
-                                    <h2>404 page</h2>
-                                </a>
-                            </li>
-
-                            <li>
-                                @{
-                                    if (!User.Identity.IsAuthenticated)
-                                    {
-                                        <a href="@Url.Action("Index", "Account")">
-                                            <h2>Login / Register</h2>
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        @Html.Raw("Welcome  " + User.Identity.GetScreenName())
-
-
-                                    }
-
-                                }
-
-
-                            </li>
-
-
-                        </ul>
-
-                        <!-- Search for mobile -->
-                        <div class="search  hidden-md hidden-lg">
-                            <input type="text" class="search-input" placeholder="SEARCH">
-                            <a href="#">
-                                <div class="search-btn">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- /Search for mobile -->
-                        <ul class="nav-social-icons">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                </div>
+                <!-- /Search for mobile -->
+                <ul class="nav-social-icons">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <!-- Menu for mobile -->
-            <div class="select-cat-sm hidden-lg hidden-md">
-                <select>
-                    <option value="select-cat">Select Category...</option>
-                    <option value="">Design</option>
-                    <option value="">Web Design</option>
-                    <option value="">Responsive</option>
-                    <option value="">Typography</option>
-                    <option value="">Inspiration</option>
-                    <option value="">Mobile</option>
-                    <option value="">iPhone & iPad</option>
-                    <option value="">Android</option>
-                    <option value="">Design Patterns</option>
-                    <option value="">Coding</option>
-                    <option value="">CSS</option>
-                    <option value="">HTML</option>
-                    <option value="">JavaScript</option>
-                    <option value="">Techniques</option>
-                </select>
-            </div>
-            <!-- End menu for mobile -->
-
-        </div>
-
-
-        @* This will load partial pages  *@
-        @RenderBody()
-
-        <div class="col-md-12">
-            <footer>
-                <div class="col-md-6">
-                    <div class="footer-about">
-                        <h3>About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisic ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.tempor incididunt ut labore et dolore magna aliqua.incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="footer-links">
-                        <h3>Links</h3>
-                        <ul>
-                            <li>
-                                <a href="#">First link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second link</a>
-                            </li>
-                            <li>
-                                <a href="#">Third link</a>
-                            </li>
-                            <li>
-                                <a href="#">Fourth link</a>
-                            </li>
-                            <li>
-                                <a href="#">Fifth link</a>
-                            </li>
-                            <li>
-                                <a href="#">Sixth link</a>
-                            </li>
-                            <li>
-                                <a href="#">Seventh link</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="footer-newsletter">
-                        <h3>Inkwell Newsletter</h3>
-                        <div class="email-flat-icon"></div>
-                        <p>Subscribe to our email newsletter for useful tips and valuable resources.</p>
-                        <div class="Subscribe-form">
-                            <input type="text" placeholder="Enter your email...">
-                            <a href="#">
-                                <div class="Subscribe-btn">
-                                    <i class="fa fa-paper-plane-o"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <p class="footer-copyright">
-                © Copyright 2016 - Inkwell Theme by <a href="#">Pervico</a>
-            </p>
-        </div>
-
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="@Url.Content("~/Assets/js/jquery.min.js")"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="@Url.Content("~/Assets/js/bootstrap.min.js")"></script>
-        <script src="@Url.Content("~/Assets/js/owl-carousel/owl.carousel.min.js")"></script>
-        <script src="@Url.Content("~/Assets/js/jQuery.style.switcher.js")"></script>
-        <script src="@Url.Content("~/Assets/js/main.js")"></script>
-
-
-        @RenderSection("Scripts", false)
+        </nav>
     </div>
+    <!-- Menu for mobile -->
+    <div class="select-cat-sm hidden-lg hidden-md">
+        <select>
+            <option value="select-cat">Select Category...</option>
+            <option value="">Design</option>
+            <option value="">Web Design</option>
+            <option value="">Responsive</option>
+            <option value="">Typography</option>
+            <option value="">Inspiration</option>
+            <option value="">Mobile</option>
+            <option value="">iPhone & iPad</option>
+            <option value="">Android</option>
+            <option value="">Design Patterns</option>
+            <option value="">Coding</option>
+            <option value="">CSS</option>
+            <option value="">HTML</option>
+            <option value="">JavaScript</option>
+            <option value="">Techniques</option>
+        </select>
+    </div>
+    <!-- End menu for mobile -->
+
+</div>
+
+
+@* This will load partial pages  *@
+@RenderBody()
+
+<div class="col-md-12">
+    <footer>
+        <div class="col-md-6">
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisic ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.tempor incididunt ut labore et dolore magna aliqua.incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="footer-links">
+                <h3>Links</h3>
+                <ul>
+                    <li>
+                        <a href="#">First link</a>
+                    </li>
+                    <li>
+                        <a href="#">Second link</a>
+                    </li>
+                    <li>
+                        <a href="#">Third link</a>
+                    </li>
+                    <li>
+                        <a href="#">Fourth link</a>
+                    </li>
+                    <li>
+                        <a href="#">Fifth link</a>
+                    </li>
+                    <li>
+                        <a href="#">Sixth link</a>
+                    </li>
+                    <li>
+                        <a href="#">Seventh link</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="footer-newsletter">
+                <h3>Inkwell Newsletter</h3>
+                <div class="email-flat-icon"></div>
+                <p>Subscribe to our email newsletter for useful tips and valuable resources.</p>
+                <div class="Subscribe-form">
+                    <input type="text" placeholder="Enter your email...">
+                    <a href="#">
+                        <div class="Subscribe-btn">
+                            <i class="fa fa-paper-plane-o"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <p class="footer-copyright">
+        © Copyright 2016 - Inkwell Theme by <a href="#">Pervico</a>
+    </p>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="@Url.Content("~/Assets/js/jquery.min.js")"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="@Url.Content("~/Assets/js/bootstrap.min.js")"></script>
+<script src="@Url.Content("~/Assets/js/owl-carousel/owl.carousel.min.js")"></script>
+<script src="@Url.Content("~/Assets/js/jQuery.style.switcher.js")"></script>
+<script src="@Url.Content("~/Assets/js/main.js")"></script>
+
+
+@RenderSection("Scripts", false)
+</div>
 </div>
 <div class="footer-bttom-line"></div>
 

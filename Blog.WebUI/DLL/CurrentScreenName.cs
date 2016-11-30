@@ -8,7 +8,7 @@ namespace Blog.WebUI.DLL
     public static class CurrentScreenName
     {
 
-        public static string GetScreenName(this IIdentity identity)
+        public static string GetFullName(this IIdentity identity)
         {
             return HttpContext.Current.Session["CurrentScreenName"]?.ToString() ?? "";
         }
