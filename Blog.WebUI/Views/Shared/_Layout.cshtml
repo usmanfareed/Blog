@@ -1,5 +1,8 @@
-﻿@{
+﻿@using Blog.WebUI.DLL
+@using Microsoft.AspNet.Identity
+@{
     Layout = null;
+  
 }
 
 <!DOCTYPE html>
@@ -19,7 +22,7 @@
     <link href="@Url.Content("~/Assets/css/bootstrap.min.css")" rel="stylesheet">
 
     @* Css section *@
-    @RenderSection("Styles",false)
+    @RenderSection("Styles", false)
 
 
     <!-- Owl Carousel Assets -->
@@ -52,119 +55,137 @@
     <meta name="twitter:image" content="../../../../example.com/image.html">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="head">
-                    <header style="display:inline">
-                        <a href="index.html" >
-                            <img src="@Url.Content("~/Assets/images/pblogo2.png")" width="200" height="120" alt="Inkwell logo">
-                        </a>
-                    </header>
-                    <nav style="display: inline"> 
-                        <div class="navbar-header" >
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse cnavbar" id="bs-example-navbar-collapse-1">
-                            <ul class="nav-menu">
-                                <li>
-                                    <a href="index.html">
-                                        <h2>Home</h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="contact.html">
-                                        <h2>Contact</h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="category.html">
-                                        <h2>Category</h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="post.html">
-                                        <h2>Posts</h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="404.html">
-                                        <h2>404 page</h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://pervico.com/template/iw/inkwell-rtl/index.html">
-                                        <h2 style="color: red">RTL Version</h2>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- Search for mobile -->
-                            <div class="search  hidden-md hidden-lg">
-                                <input type="text" class="search-input" placeholder="SEARCH">
-                                <a href="#">
-                                    <div class="search-btn">
-                                        <i class="fa fa-search"></i>
-                                    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="head">
+                <header style="display: inline">
+                    <a href="index.html">
+                        <img src="@Url.Content("~/Assets/images/pblogo2.png")" width="200" height="120" alt="Inkwell logo">
+                    </a>
+                </header>
+                <nav style="display: inline">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse cnavbar" id="bs-example-navbar-collapse-1">
+                        <ul class="nav-menu">
+                            <li>
+                                <a href="index.html">
+                                    <h2>Home</h2>
                                 </a>
-                            </div>
-                            <!-- /Search for mobile -->
-                            <ul class="nav-social-icons">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                            </li>
+                            <li>
+                                <a href="contact.html">
+                                    <h2>Contact</h2>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="category.html">
+                                    <h2>Category</h2>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="post.html">
+                                    <h2>Posts</h2>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="404.html">
+                                    <h2>404 page</h2>
+                                </a>
+                            </li>
+
+                            <li>
+                                @{
+                                    if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <a href="@Url.Action("Index", "Account")">
+                                            <h2>Login / Register</h2>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("Welcome  " + User.Identity.GetScreenName())
+
+
+                                    }
+
+                                }
+
+
+                            </li>
+
+
+                        </ul>
+
+                        <!-- Search for mobile -->
+                        <div class="search  hidden-md hidden-lg">
+                            <input type="text" class="search-input" placeholder="SEARCH">
+                            <a href="#">
+                                <div class="search-btn">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </a>
                         </div>
-                    </nav>
-                </div>
-                <!-- Menu for mobile -->
-                <div class="select-cat-sm hidden-lg hidden-md">
-                    <select>
-                        <option value="select-cat">Select Category...</option>
-                        <option value="">Design</option>
-                        <option value="">Web Design</option>
-                        <option value="">Responsive</option>
-                        <option value="">Typography</option>
-                        <option value="">Inspiration</option>
-                        <option value="">Mobile</option>
-                        <option value="">iPhone & iPad</option>
-                        <option value="">Android</option>
-                        <option value="">Design Patterns</option>
-                        <option value="">Coding</option>
-                        <option value="">CSS</option>
-                        <option value="">HTML</option>
-                        <option value="">JavaScript</option>
-                        <option value="">Techniques</option>
-                    </select>
-                </div>
-                <!-- End menu for mobile -->
-
+                        <!-- /Search for mobile -->
+                        <ul class="nav-social-icons">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            
+            <!-- Menu for mobile -->
+            <div class="select-cat-sm hidden-lg hidden-md">
+                <select>
+                    <option value="select-cat">Select Category...</option>
+                    <option value="">Design</option>
+                    <option value="">Web Design</option>
+                    <option value="">Responsive</option>
+                    <option value="">Typography</option>
+                    <option value="">Inspiration</option>
+                    <option value="">Mobile</option>
+                    <option value="">iPhone & iPad</option>
+                    <option value="">Android</option>
+                    <option value="">Design Patterns</option>
+                    <option value="">Coding</option>
+                    <option value="">CSS</option>
+                    <option value="">HTML</option>
+                    <option value="">JavaScript</option>
+                    <option value="">Techniques</option>
+                </select>
+            </div>
+            <!-- End menu for mobile -->
 
-            @* This will load partial pages  *@
-            @RenderBody()
+        </div>
+
+
+        @* This will load partial pages  *@
+        @RenderBody()
 
         <div class="col-md-12">
             <footer>
@@ -222,7 +243,6 @@
                 © Copyright 2016 - Inkwell Theme by <a href="#">Pervico</a>
             </p>
         </div>
-
 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

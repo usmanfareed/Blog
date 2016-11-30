@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
@@ -9,7 +10,9 @@ using Blog.DLL;
 using Blog.Interfaces.IRepository;
 using Blog.Models;
 using Blog.WebUI.Areas.AdminPanel.ViewModels;
+using Blog.WebUI.DLL;
 using Blog.WebUI.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace Blog.WebUI.Areas.AdminPanel.Controllers
 {
@@ -227,6 +230,13 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
                 FormsAuthentication.SetAuthCookie(user.UserName,false);
 
+                if (string.IsNullOrWhiteSpace(Session["CurrentScreenName"]?.ToString()))
+                {
+                    Session["CurrentScreenName"] = user.FullName;
+
+                }
+
+                User.Identity.GetScreenName();
 
                 return RedirectToAction("Index");
             }
@@ -234,7 +244,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             return RedirectToAction("Index","Account");
         }
 
-
+           
 
     }
 }
