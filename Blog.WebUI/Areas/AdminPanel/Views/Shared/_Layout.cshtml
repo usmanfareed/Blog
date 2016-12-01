@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Blog.DLL
+@{
     Layout = null;
 }
 
@@ -11,7 +12,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - FREE Bootstrap Admin Template</title>
+    <title>Welcome to Admin Panel</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -48,7 +49,7 @@ TOP BAR CONTENT & NOTIFICATIONS
     </div>
     <!--logo start-->
     <a href="index.html" class="logo">
-        <b>DASHGUM FREE</b>
+        <b>Admin Panel</b>
     </a>
     <!--logo end-->
     <div class="nav notify-row" id="top_menu">
@@ -209,12 +210,7 @@ MAIN SIDEBAR MENU
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered">
-                <a href="profile.html">
-                    <img src="@Url.Content("~/Areas/AdminPanel/Assets/img/ui-sam.jpg")" class="img-circle" width="60">
-                </a>
-            </p>
-            <h5 class="centered">Marcel Newman</h5>
+            <h5 class="centered">@Html.Raw(User.Identity.GetFullName())</h5>
 
             <li class="mt">
                 <a class="active" href="index.html">

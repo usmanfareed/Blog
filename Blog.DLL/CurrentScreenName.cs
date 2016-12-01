@@ -9,7 +9,7 @@ namespace Blog.DLL
 
         public static string GetFullName(this IIdentity identity)
         {
-            return HttpContext.Current.Session["CurrentScreenName"]?.ToString() ?? "";
+            return HttpContext.Current.Request.Cookies["FullName"]?.Value ?? "";
         }
     }
 }

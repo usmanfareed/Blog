@@ -1,4 +1,4 @@
-﻿@using Blog.WebUI.DLL
+﻿@using Blog.DLL
 @using Microsoft.AspNet.Identity
 @{
     Layout = null;
@@ -59,9 +59,34 @@
 <div class="col-md-12">
     <div class="head">
         <header style="display: inline">
-            <a href="index.html">
-                <img src="@Url.Content("~/Assets/images/pblogo2.png")" width="200" height="120" alt="Inkwell logo">
-            </a>
+           
+            <div class="container">
+                <div class="row">
+                    
+                    <a class="col-md-8">
+                        <img src="@Url.Content("~/Assets/images/pblogo2.png")" width="200" height="120" alt="Inkwell logo">
+                       
+
+                    </a>
+                    
+                   
+                    <p style="margin-top: 5%; font-size: 20px; color: orange">
+                        
+                        @{
+                            if (!string.IsNullOrWhiteSpace(User.Identity.Name))
+                            {
+                                @Html.Raw("Welcome  " + User.Identity.GetFullName())
+
+                            }
+                        }
+
+                    </p>
+
+                </div>
+               
+
+
+            </div>
         </header>
         <nav style="display: inline">
             <div class="navbar-header">
@@ -102,7 +127,7 @@
                     @{
 
 
-                        if (!User.Identity.IsAuthenticated)
+                        if (string.IsNullOrWhiteSpace(User.Identity.Name))
                         {
                             <li>
                                 <a href="@Url.Action("Index", "Account")">
@@ -112,9 +137,7 @@
                         }
                         else
                         {
-                            <li>
-                                @Html.Raw("Welcome  " + User.Identity.GetFullName())
-                            </li>
+                          
                             <li>
                                 <a href="@Url.Action("Logout", "Auth", new {area = "AdminPanel"})">
                                     <h2>LogOut</h2>

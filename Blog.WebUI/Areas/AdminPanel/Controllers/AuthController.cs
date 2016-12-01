@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
@@ -10,7 +12,6 @@ using Blog.DLL;
 using Blog.Interfaces.IRepository;
 using Blog.Models;
 using Blog.WebUI.Areas.AdminPanel.ViewModels;
-using Blog.WebUI.DLL;
 using Blog.WebUI.ViewModels;
 using Microsoft.AspNet.Identity;
 
@@ -222,17 +223,31 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                 return View("~/Views/Account/Index.cshtml",model);
             }
 
-
+            bool rememberme = true;
             var user =   _userRepository.LoginUser(model.Login.UserName);
+
 
             if (HashPassword.CheckPassword(model.Login.Password , user.PasswordHash))
             {
 
-                FormsAuthentication.SetAuthCookie(user.UserName,false);
+                FormsAuthentication.SetAuthCookie(user.UserName, rememberme);
+                //HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName,false);
+                HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName, rememberme);
+                cookie.Expires = DateTime.Now.AddMinutes(20);
+                System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
-                if (string.IsNullOrWhiteSpace(Session["CurrentScreenName"]?.ToString()))
+                HttpCookie userCookie = new HttpCookie("FullName")
                 {
-                    Session["CurrentScreenName"] = user.FullName;
+                    Expires = DateTime.Now.AddMinutes(20),
+                    Value = user.FullName
+                };
+
+                System.Web.HttpContext.Current.Response.Cookies.Add(userCookie);
+
+
+                if (string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.Session["CurrentScreenName"]?.ToString()))
+                {
+                    System.Web.HttpContext.Current.Session["CurrentScreenName"] = user.FullName;
 
                 }
 
@@ -249,8 +264,16 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
         public ActionResult Logout()
         {
+           
             FormsAuthentication.SignOut();
             Session.Abandon();
+
+            if (System.Web.HttpContext.Current.Request.Cookies["FullName"] != null)
+            {
+                var del = new HttpCookie("FullName") {Expires = DateTime.Now.AddDays(-1)};
+                Response.Cookies.Add(del);
+            }
+
             return RedirectToAction("Index", "Home", new {area = ""});
         }
 

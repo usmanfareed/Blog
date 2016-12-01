@@ -482,7 +482,7 @@
     <Compile Include="Areas\AdminPanel\ViewModels\CreateUserVIewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DLL\CurrentScreenName.cs" />
+    <Compile Include="Controllers\HomePostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -534,6 +534,8 @@
     <Content Include="Areas\AdminPanel\Views\Auth\Users.cshtml" />
     <Content Include="Assets\scss\style.scss" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\HomePosts\Index.cshtml" />
+    <Content Include="Views\HomePosts\Post.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
