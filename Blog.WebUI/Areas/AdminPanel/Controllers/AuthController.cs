@@ -224,7 +224,9 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             }
 
             bool rememberme = true;
-            var user =   _userRepository.LoginUser(model.Login.UserName);
+            int time = 20;
+
+            var user =   _userRepository.GetUser(model.Login.UserName,null);
 
 
             if (HashPassword.CheckPassword(model.Login.Password , user.PasswordHash))
@@ -233,12 +235,12 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                 FormsAuthentication.SetAuthCookie(user.UserName, rememberme);
                 //HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName,false);
                 HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName, rememberme);
-                cookie.Expires = DateTime.Now.AddMinutes(20);
+                cookie.Expires = DateTime.Now.AddMinutes(time);
                 System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
                 HttpCookie userCookie = new HttpCookie("FullName")
                 {
-                    Expires = DateTime.Now.AddMinutes(20),
+                    Expires = DateTime.Now.AddMinutes(time),
                     Value = user.FullName
                 };
 
@@ -251,7 +253,6 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
                 }
 
-                User.Identity.GetFullName();
 
                 return RedirectToAction("Index");
             }
@@ -275,6 +276,41 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             }
 
             return RedirectToAction("Index", "Home", new {area = ""});
+        }
+
+
+
+        [Route("reset")]
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult ResetPass(string email)
+        {
+
+            if (_userRepository.GetUser(null,email) != null)
+
+            {
+
+                AuthToken token = new AuthToken();
+
+                var user = _userRepository.GetUser(null, email);
+
+              token.UserId = user;
+              token.Token = Base.GetToken();
+
+              _userRepository.SaveToken(token);
+
+                var result = Base.EmailToken(email, token.Token);
+
+
+
+                return Content(result);
+
+            }
+
+
+            return Content("User Not Found");
+
+
         }
 
     }

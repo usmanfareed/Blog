@@ -78,6 +78,14 @@
     <Compile Include="Migrations\201611191753220_CreatedAndLoginAtUsers.Designer.cs">
       <DependentUpon>201611191753220_CreatedAndLoginAtUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612021049283_AddedAuthTokenTable.cs" />
+    <Compile Include="Migrations\201612021049283_AddedAuthTokenTable.Designer.cs">
+      <DependentUpon>201612021049283_AddedAuthTokenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612090703205_AddedUserIdInAuthToken.cs" />
+    <Compile Include="Migrations\201612090703205_AddedUserIdInAuthToken.Designer.cs">
+      <DependentUpon>201612090703205_AddedUserIdInAuthToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
@@ -122,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611191753220_CreatedAndLoginAtUsers.resx">
       <DependentUpon>201611191753220_CreatedAndLoginAtUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021049283_AddedAuthTokenTable.resx">
+      <DependentUpon>201612021049283_AddedAuthTokenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612090703205_AddedUserIdInAuthToken.resx">
+      <DependentUpon>201612090703205_AddedUserIdInAuthToken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

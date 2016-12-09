@@ -27,6 +27,7 @@ namespace Blog.DAL.Repositories
 
         public bool IsExist(string user)
         {
+         
             return db.Users.Any(x => x.UserName == user);
         }
 
@@ -67,9 +68,13 @@ namespace Blog.DAL.Repositories
 
 
 
-       public User LoginUser(string username)
+       public User GetUser(string username,string email)
        {
-           return db.Users.SingleOrDefault(x => x.UserName == username);
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                return db.Users.SingleOrDefault(x => x.Email == email);
+            }
+            return db.Users.SingleOrDefault(x => x.UserName == username);
        }
 
 
@@ -86,5 +91,16 @@ namespace Blog.DAL.Repositories
             ;
 
         }
+
+
+       public string SaveToken(AuthToken token)
+       {
+           db.AuthTokens.Add(token);
+           db.SaveChanges();
+
+           return "Success";
+
+       }
+       
      }
 }

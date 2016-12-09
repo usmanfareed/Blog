@@ -11,8 +11,9 @@ namespace Blog.Interfaces.IRepository
         User GetUserById(int id);
         void UpdateUser(User user);
 
-        User LoginUser(string username);
+        User GetUser(string username,string email);
 
         string[] UserRoles(string username);
+        string SaveToken(AuthToken token);
     }
 }

@@ -32,6 +32,7 @@ namespace Blog.Models
         public DateTime CreatedAt { get; set; }
 
         public ICollection<Role> Roles { get; set; }
+        public ICollection<AuthToken> AuthTokens { get; set; }
 
 
 

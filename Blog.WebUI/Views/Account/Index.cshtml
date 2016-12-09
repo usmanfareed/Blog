@@ -63,7 +63,7 @@
 
 
                                 <button type="submit">Sign In</button>
-                                <a href="">Forgot Password?</a>
+                                <a style="cursor: pointer" data-toggle="modal" data-target="#myModal">Forgot Password?</a>
                             </form>
                         </div>
                         <div class="social-login">
@@ -123,8 +123,7 @@
                                 </div>
 
 
-                                <button type="submit">Sign In</button>
-                                <a href="">Forgot Password?</a>
+                                <button type="submit">Sign Up</button>
                             </form>
                         </div>
                         <div class="social-login">
@@ -148,6 +147,29 @@
         </div>
     </div>
 </div>
+    
+    
+        <!--Password Recovery Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Recover Password</h4>
+                    </div>
+                    <form class="form-group" method="get" action="@Url.Action("ResetPass","Auth",new {area="AdminPanel"}) ">
+                        <div class="modal-body">
+                            <input type="Email" name="email" placeholder="Enter Email" class="form-control" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" >Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
 
 
 <script src="@Url.Content("~/Areas/AdminPanel/Assets/js/jquery-1.8.3.min.js")"></script>
