@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+
     <meta charset="UTF-8">
     <title>Login/Sign-In</title>
 
@@ -86,30 +86,30 @@
                         <div class="innter-form">
                             <form class="sa-innate-form" action="@Url.Action("CreateUser", "Auth", new {Area = "AdminPanel"})" method="post">
                                 @Html.AntiForgeryToken()
-                                @Html.Hidden("IsUserRegister",true)
+                                @Html.Hidden("IsUserRegister", true)
 
                                 <div class="form-group">
-                                   
+
                                     @Html.LabelFor(x => x.Register.FullName)
-                                    @Html.TextBoxFor(x => x.Register.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                                    @Html.TextBoxFor(x => x.Register.FullName, new {@class = "form-control", placeholder = "Full Name"})
                                     @Html.ValidationMessageFor(x => x.Register.FullName)
 
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Register.UserName)
-                                    @Html.TextBoxFor(x => x.Register.UserName, new { @class = "form-control", placeholder = "User Name" })
+                                    @Html.TextBoxFor(x => x.Register.UserName, new {@class = "form-control", placeholder = "User Name"})
                                     @Html.ValidationMessageFor(x => x.Register.UserName)
 
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Register.Email)
-                                    @Html.TextBoxFor(x => x.Register.Email, new { @class = "form-control", placeholder = "Email" })
+                                    @Html.TextBoxFor(x => x.Register.Email, new {@class = "form-control", placeholder = "Email"})
                                     @Html.ValidationMessageFor(x => x.Register.Email)
 
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Register.Password)
-                                    @Html.TextBoxFor(x => x.Register.Password, new { @class = "form-control", placeholder = "Password" , type ="password"})
+                                    @Html.TextBoxFor(x => x.Register.Password, new {@class = "form-control", placeholder = "Password", type = "password"})
                                     @Html.ValidationMessageFor(x => x.Register.Password)
 
                                 </div>
@@ -117,7 +117,7 @@
                                 <div class="form-group">
 
                                     @Html.LabelFor(x => x.Register.ConfirmPassword)
-                                    @Html.TextBoxFor(x => x.Register.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", type = "password" })
+                                    @Html.TextBoxFor(x => x.Register.ConfirmPassword, new {@class = "form-control", placeholder = "Confirm Password", type = "password"})
                                     @Html.ValidationMessageFor(x => x.Register.ConfirmPassword)
 
                                 </div>
@@ -147,39 +147,38 @@
         </div>
     </div>
 </div>
-    
-    
-        <!--Password Recovery Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Recover Password</h4>
-                    </div>
-                    <form class="form-group" method="get" action="@Url.Action("ResetPass","Auth",new {area="AdminPanel"}) ">
-                        <div class="modal-body">
-                            <input type="Email" name="email" placeholder="Enter Email" class="form-control" />
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" >Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
-                </div>
+
+
+<!--Password Recovery Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Recover Password</h4>
             </div>
+            <form class="form-group" method="get" action="@Url.Action("SendToken", "Auth", new {area = "AdminPanel"})">
+                <div class="modal-body">
+                    <input type="Email" name="email" placeholder="Enter Email" class="form-control"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
-    
+    </div>
+</div>
 
 
 <script src="@Url.Content("~/Areas/AdminPanel/Assets/js/jquery-1.8.3.min.js")"></script>
 <script src="@Url.Content("~/Areas/AdminPanel/Assets/js/bootstrap.min.js")"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-    
- @{
-     if (Model != null)
-     {
+
+@{
+    if (Model != null)
+    {
         <script type="text/javascript">
 
             (function() {
@@ -192,8 +191,8 @@
 
 
         </script>
-     }
-}   
+    }
+}
 
 </body>
 </html>

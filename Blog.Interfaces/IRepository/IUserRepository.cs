@@ -15,5 +15,7 @@ namespace Blog.Interfaces.IRepository
 
         string[] UserRoles(string username);
         string SaveToken(AuthToken token);
+        int GetIdByToken(string token);
+        string ResetPass(string pass, string token);
     }
 }

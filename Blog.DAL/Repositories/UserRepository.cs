@@ -102,5 +102,23 @@ namespace Blog.DAL.Repositories
 
        }
        
+
+        //this method returns user id by token
+       public int GetIdByToken(string token)
+       {
+           return  db.AuthTokens
+               .Where(x => x.Token == token)
+               .Select(x => x.UserId.Id).Single();
+
+       }
+
+       public string ResetPass(string pass, string token)
+       {
+         var user=  db.Users.Find(GetIdByToken(token));
+           user.PasswordHash = pass;
+           db.SaveChanges();
+           return "Password changed";
+       }
+       
      }
 }

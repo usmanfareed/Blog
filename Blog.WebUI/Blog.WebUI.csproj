@@ -490,6 +490,7 @@
     <Compile Include="Areas\AdminPanel\ViewModels\ImagePostViewModel.cs" />
     <Compile Include="Areas\AdminPanel\ViewModels\PostViewModel.cs" />
     <Compile Include="ViewModels\AuthViewModel.cs" />
+    <Compile Include="ViewModels\ResetPassViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -536,6 +537,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\HomePosts\Index.cshtml" />
     <Content Include="Views\HomePosts\Post.cshtml" />
+    <Content Include="Views\Account\resetpass.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -26,12 +26,14 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         private readonly IRepositoryBase<Role> _role;
         private readonly IRepositoryBase<User> _userRepositoryBase;
 
-        public AuthController(IUserRepository userRepository,IRepositoryBase<Role> role,IRepositoryBase<User> userRepositoryBase )
+        public AuthController(IUserRepository userRepository, IRepositoryBase<Role> role,
+            IRepositoryBase<User> userRepositoryBase)
         {
             _userRepository = userRepository;
             _role = role;
             _userRepositoryBase = userRepositoryBase;
         }
+
         // GET: AdminPanel/Auth
         [Route("create")]
         public ActionResult Index()
@@ -48,20 +50,19 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                 IsChecked = false
             }).ToList();
 
-            var authViewMode = new AuthViewModel { Register = user };
+            var authViewMode = new AuthViewModel {Register = user};
 
-            return View("Index",authViewMode);
+            return View("Index", authViewMode);
         }
 
         [Route("createuser")]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-
         public ActionResult CreateUser(AuthViewModel userRegister, bool IsUserRegister)
         {
             ViewBag.IsNew = true;
             if (!ModelState.IsValid)
-            {   
+            {
                 if (IsUserRegister)
                 {
                     //return RedirectToAction("Index", "Account",new {area = "",user});
@@ -73,9 +74,6 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
             if (_userRepository.IsExist(userRegister.Register.UserName))
             {
-
-
-
                 if (IsUserRegister)
                 {
                     ModelState["Register.UserName"].Errors.Add("User already exists ");
@@ -84,9 +82,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
                 ModelState["UserName"].Errors.Add("User already exists ");
 
-                return View("Index",userRegister);
-
-
+                return View("Index", userRegister);
             }
             //var roles = user.Roles.Select(x => new Role()
             //{
@@ -101,21 +97,20 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                 Email = userRegister.Register.Email,
                 CreatedAt = DateTime.Now,
                 PasswordHash = HashPassword.SetPassword(userRegister.Register.Password),
-                Roles = userRegister.Register.Roles?.Where(x=>x.IsChecked).Select(x => new Role
+                Roles = userRegister.Register.Roles?.Where(x => x.IsChecked).Select(x => new Role
                         {
-
                             Id = x.Id,
                             Name = x.Name
-                        }).ToList() ?? new List<Role> { new Role
+                        }).ToList() ?? new List<Role>
                         {
-                            Id = 3,
-                            Name = "User"
-                        } }
-
-
+                            new Role
+                            {
+                                Id = 3,
+                                Name = "User"
+                            }
+                        }
             };
 
-        
 
             _userRepositoryBase.AddUpdate(newuser);
             _userRepositoryBase.Commit();
@@ -128,12 +123,11 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         public ActionResult Users()
         {
             var users = _userRepository.GetUsers();
-            return View("Users",users);
+            return View("Users", users);
         }
 
 
-
-         [Route("delete/{id}")]
+        [Route("delete/{id}")]
         public ActionResult Delete(int id)
         {
             _userRepositoryBase.Delete(id);
@@ -143,7 +137,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         }
 
 
-         [Route("update")]
+        [Route("update")]
         public ActionResult Update(AuthViewModel user)
         {
             ViewBag.IsNew = false;
@@ -152,9 +146,6 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             {
                 return View("Index", user);
             }
-
-
-
 
 
             var newuser = new User
@@ -166,51 +157,44 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                 PasswordHash = HashPassword.SetPassword(user.Register.Password),
                 Roles = user.Register.Roles.Where(x => x.IsChecked).Select(x => new Role
                 {
-
                     Id = x.Id,
                     Name = x.Name
                 }).ToList()
-
-
             };
 
 
-
             _userRepository.UpdateUser(newuser);
-            
-            
+
+
             return RedirectToAction("Users");
         }
 
 
-
-         [Route("edit/{id}")]
+        [Route("edit/{id}")]
         public ActionResult Edit(int id)
-         {
-             ViewBag.IsNew = false;
-             var getUser = _userRepository.GetUserById(id);
-             var roles = _role.GetAll().ToList();
+        {
+            ViewBag.IsNew = false;
+            var getUser = _userRepository.GetUserById(id);
+            var roles = _role.GetAll().ToList();
 
-             var user = new CreateUserVIewModel()
-             {
-                 Id = getUser.Id,
-                 UserName = getUser.UserName,
-                 Email = getUser.Email,
-                 FullName = getUser.FullName,
-                 Roles = roles.Select(x=> new CreateUserVIewModel.RoleViewModel()
-                 {
-                     Id = x.Id ,
-                     Name = x.Name,
-                     IsChecked = getUser.Roles.Any(z => z.Id == x.Id)
-                 }).ToList()
-             };
+            var user = new CreateUserVIewModel()
+            {
+                Id = getUser.Id,
+                UserName = getUser.UserName,
+                Email = getUser.Email,
+                FullName = getUser.FullName,
+                Roles = roles.Select(x => new CreateUserVIewModel.RoleViewModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    IsChecked = getUser.Roles.Any(z => z.Id == x.Id)
+                }).ToList()
+            };
 
-             var authViewMode = new AuthViewModel {Register = user};
+            var authViewMode = new AuthViewModel {Register = user};
 
-             return View("Index", authViewMode);
-
-         }
-
+            return View("Index", authViewMode);
+        }
 
 
         [AllowAnonymous]
@@ -220,18 +204,20 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("~/Views/Account/Index.cshtml",model);
+                return View("~/Views/Account/Index.cshtml", model);
             }
 
             bool rememberme = true;
             int time = 20;
 
-            var user =   _userRepository.GetUser(model.Login.UserName,null);
-
-
-            if (HashPassword.CheckPassword(model.Login.Password , user.PasswordHash))
+            var user = _userRepository.GetUser(model.Login.UserName, null);
+            if (user == null)
             {
+                return Content("invalid user");
+            }
 
+            if (HashPassword.CheckPassword(model.Login.Password, user.PasswordHash))
+            {
                 FormsAuthentication.SetAuthCookie(user.UserName, rememberme);
                 //HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName,false);
                 HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName, rememberme);
@@ -250,22 +236,19 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                 if (string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.Session["CurrentScreenName"]?.ToString()))
                 {
                     System.Web.HttpContext.Current.Session["CurrentScreenName"] = user.FullName;
-
                 }
 
 
                 return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index","Account");
+            return RedirectToAction("Index", "Account");
         }
 
         [Route("logout")]
         [AllowAnonymous]
-
         public ActionResult Logout()
         {
-           
             FormsAuthentication.SignOut();
             Session.Abandon();
 
@@ -278,40 +261,82 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             return RedirectToAction("Index", "Home", new {area = ""});
         }
 
+        //This action emails token to reset password
 
-
-        [Route("reset")]
+        [Route("gettoken")]
         [AllowAnonymous]
         [HttpGet]
-        public ActionResult ResetPass(string email)
+        public ActionResult SendToken(string email)
         {
-
-            if (_userRepository.GetUser(null,email) != null)
+            if (_userRepository.GetUser(null, email) != null)
 
             {
-
                 AuthToken token = new AuthToken();
 
                 var user = _userRepository.GetUser(null, email);
 
-              token.UserId = user;
-              token.Token = Base.GetToken();
+                token.UserId = user;
+                token.Token = Base.GetToken();
 
-              _userRepository.SaveToken(token);
+                _userRepository.SaveToken(token);
 
-                var result = Base.EmailToken(email, token.Token);
+                var urlBuilder = new UriBuilder(Request.Url.AbsoluteUri);
 
+                urlBuilder.Path = "AdminPanel/Users/verifytoken/";
+                urlBuilder.Query = null;
+                    
+
+                string url = urlBuilder.ToString();
+
+
+              
+                var result = Base.EmailToken(email, token.Token, url);
 
 
                 return Content(result);
-
             }
 
 
             return Content("User Not Found");
-
-
         }
 
+
+        [Route("verifytoken/{token}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult VerifyToken(string token)
+        {
+            if (Base.CheckTokenExpiry(token))
+            {
+                //var id = _userRepository.GetIdByToken(token);
+                //var user = _userRepository.GetUserById(id);
+
+
+                if (_userRepository.GetIdByToken(token) != 0)
+                {
+                    var model = new ResetPassViewModel {Token = token};
+                    return View("~/Views/Account/resetpass.cshtml",model);
+
+                }
+
+
+
+            }
+            else
+            {
+                return Content("Token invalid or Token expired");
+            }
+
+            return null;
+        }
+
+
+        [Route("resetpass")]
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ResetPass(ResetPassViewModel model)
+        {
+           return Content(_userRepository.ResetPass(HashPassword.SetPassword(model.Password), model.Token)); 
+        }
     }
 }
