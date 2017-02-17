@@ -8,7 +8,7 @@ namespace Blog.DAL.Data
     
     {
         public BlogDbContext()
-            :base("BlogDatabase")
+            :base("name=BlogConnection")
         {
 
         }

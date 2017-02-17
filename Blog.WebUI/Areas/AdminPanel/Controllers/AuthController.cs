@@ -282,7 +282,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
                 var urlBuilder = new UriBuilder(Request.Url.AbsoluteUri);
 
-                urlBuilder.Path = "AdminPanel/Users/verifytoken/";
+                urlBuilder.Path = "AdminPanel/Users/verifytoken";
                 urlBuilder.Query = null;
                     
 
@@ -301,7 +301,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         }
 
 
-        [Route("verifytoken/{token}")]
+        [Route("verifytoken/{*token}")]
         [AllowAnonymous]
         [HttpGet]
         public ActionResult VerifyToken(string token)
