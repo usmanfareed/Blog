@@ -1,62 +1,63 @@
 ﻿@using System.Globalization
 @using System.Web.UI.WebControls
-@model Blog.Models.Post
+@model Blog.WebUI.Areas.AdminPanel.ViewModels.PostIndexViewModel
 
 <h3 class="col h3">Create Posts</h3>
 @if (!string.IsNullOrEmpty(ViewBag.message))
 {
-    
-
-
 @section Scripts
-{ 
-        <script>
+{
 
-               $(document).ready(function () {
-                alertbox("@ViewBag.title","@ViewBag.message");
-                });
+    <script>
 
-         </script>
-}
-   
+        $(document).ready(function() {
+            alertbox("@ViewBag.title", "@ViewBag.message");
+        });
 
-}
+    </script>
+}}
 @{
     string action = ViewBag.IsNew ? "createpost" : "update";
     string button = ViewBag.IsNew ? "Create" : "Update";
-
-} 
+}
 
 @*@using (Html.BeginForm(null, null, FormMethod.Posts, new { @class = "form-panel" }))*@
 
-<form class="form-panel" action="@Url.Action(action)"   method="post">
+<form class="form-panel" action="@Url.Action(action)" method="post">
 
 
 
     @{
         @Html.AntiForgeryToken()
         if (!ViewBag.IsNew)
-         {
-             @Html.HiddenFor(x=>x.Id)
-             @Html.HiddenFor(x=>x.IsActive)
-             @Html.HiddenFor(x=>x.Views)
-             @Html.HiddenFor(x=>x.CreatedAt)
-             @Html.HiddenFor( x=>x.UpdatedAt,new { Value = DateTime.Now.ToString("F")})
-         }
+        {
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.IsActive)
+            @Html.HiddenFor(x => x.Views)
+            @Html.HiddenFor(x => x.CreatedAt)
+            @Html.HiddenFor(x => x.UpdatedAt, new {Value = DateTime.Now.ToString("F")})
+        }
 
 
         <div class="form-group">
             <div class="form-group">
                 @Html.LabelFor(x => x.Title)
-                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Title, new {@class = "form-control"})
                 @Html.ValidationMessageFor(x => x.Title)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.SelectedTags)
+                @Html.ListBoxFor(x => x.SelectedTags, (MultiSelectList) ViewBag.tags, new {@class = "form-control" })
+                @Html.ValidationMessageFor(x => x.SelectedTags)
 
             </div>
 
             <div class="form-group">
 
                 @Html.LabelFor(x => x.Slug)
-                @Html.TextBoxFor(x => x.Slug, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Slug, new {@class = "form-control"})
                 @Html.ValidationMessageFor(x => x.Slug)
 
 
@@ -67,7 +68,7 @@
 
                 @Html.LabelFor(x => x.Content)
                 @Html.ValidationMessageFor(x => x.Content)
-                @Html.TextAreaFor(x => x.Content, new { @class = "form-control" })
+                @Html.TextAreaFor(x => x.Content, new {@class = "form-control"})
 
 
             </div>
@@ -90,7 +91,17 @@
 
 <script src="@Url.Content("~/Areas/AdminPanel/Assets/ckeditor/ckeditor.js")"></script>
 
+@section Scripts
+{
+  <script>
+      $("#SelectedTags").select2({
+            tags: true
+        });
+
+</script>
+}
 <script>
+    
     CKEDITOR.replace('Content',
     {
         filebrowserImageBrowseUrl: '/adminpanel/posts/uploadpartial',
@@ -103,7 +114,7 @@
         dialog.setValueOf('info', 'txtUrl', url);
     }
 
-    function alertbox (title,msg) {
+    function alertbox(title, msg) {
 
         $.gritter.add({
             // (string | mandatory) the heading of the notification
@@ -114,8 +125,6 @@
 
         return false;
     };
-    
-     
+
+
 </script>
-
-

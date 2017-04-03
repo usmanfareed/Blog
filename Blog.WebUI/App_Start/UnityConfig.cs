@@ -43,6 +43,7 @@ namespace Blog.WebUI.App_Start
              container.RegisterType<IRepositoryBase<Post>, RepositoryBase<Post>>();
              container.RegisterType<IRepositoryBase<User>, RepositoryBase<User>>();
              container.RegisterType<IRepositoryBase<Role>, RepositoryBase<Role>>();
+             container.RegisterType<IRepositoryBase<Tag>, RepositoryBase<Tag>>();
              container.RegisterType<IPostRepository, PostRepository>();
              container.RegisterType<IUserRepository, UserRepository>();
         }

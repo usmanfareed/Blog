@@ -5,12 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using Blog.Areas.AdminPanel.ViewModels;
 using Blog.DAL.Data;
 using Blog.DAL.Repositories;
 using Blog.Interfaces.IRepository;
 using Blog.Models;
 using Blog.WebUI.App_Start;
+using Blog.WebUI.Areas.AdminPanel.ViewModels;
 
 
 namespace Blog.WebUI.Areas.AdminPanel.Controllers
@@ -21,12 +23,14 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
     public class PostsController : Controller
     {
         private readonly IRepositoryBase<Post> _repositoryBase;
+        private readonly IRepositoryBase<Tag> _tagrepositoryBase;
         private readonly IPostRepository _postRepository;
 
-        public PostsController(IRepositoryBase<Post> post,IPostRepository postRepository  )
+        public PostsController(IRepositoryBase<Post> post,IPostRepository postRepository , IRepositoryBase<Tag> tagrepositoryBase)
         {
             this._repositoryBase = post;
             this._postRepository = postRepository;
+            _tagrepositoryBase = tagrepositoryBase;
         }
         //private readonly IPostRepository _postRepository = AutoFacConfig.Container.Resolve<IPostRepository>();
         //private readonly IRepositoryBase<Posts> _repositoryBase = AutoFacConfig.Container.Resolve<IRepositoryBase<Posts>>();
@@ -40,7 +44,8 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         // GET: AdminPanel/Posts
         public ActionResult Index()
         {
-            
+            var tags= _tagrepositoryBase.GetAll();
+            ViewBag.tags=new MultiSelectList(tags,"Id","Title");
             ViewBag.IsNew = true;
             return View();
         }
@@ -49,7 +54,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
         [ValidateInput(false),ValidateAntiForgeryToken]
         
-        public ActionResult CreatePost(Post post)
+        public ActionResult CreatePost(PostIndexViewModel post)
         {
             if (!ModelState.IsValid)
             {
@@ -65,9 +70,28 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
 
             }
+            Post newPost = new Post(){Content = post.Content,Title = post.Title,Slug = post.Slug};
 
-            _repositoryBase.Insert(post);
-            _repositoryBase.Commit();
+
+            newPost.Tags = new List<Tag>();
+            var alltags = _tagrepositoryBase.GetAll().ToList();
+            List<Tag> list = new List<Tag>();
+            foreach (var tag in post.SelectedTags)
+            {
+                
+                if (!tag.IsInt())
+                {
+                    newPost.Tags.Add(new Tag() { Title = tag,Active = true,CreatedOn = DateTime.Now});
+                }
+                else
+                {
+                    var id = Convert.ToInt32(tag);
+                    list.Add(alltags.Single(x => x.Id == id));
+                }
+                newPost.Tags.AddRange(list);
+            }
+            
+            _postRepository.SavePost(newPost, list);
  
             return RedirectToAction("Posts");
         }

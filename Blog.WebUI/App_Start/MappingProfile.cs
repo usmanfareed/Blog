@@ -13,6 +13,7 @@ namespace Blog.WebUI.App_Start
         {
             Mapper.Initialize(x=>x.CreateMap<Post,Post>());
             Mapper.Initialize(x=>x.CreateMap<User,User>());
+            Mapper.Initialize(x=>x.CreateMap<Tag, Tag>());
         }
     }
 }

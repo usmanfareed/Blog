@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,9 +46,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -58,33 +57,26 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -94,9 +86,8 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -136,8 +127,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +331,7 @@
     <Content Include="Areas\AdminPanel\Assets\ckeditor\skins\icy_orange\scayt.png" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\styles.js" />
     <Content Include="Areas\AdminPanel\Assets\css\bootstrap.css" />
+    <Content Include="Areas\AdminPanel\Assets\css\select2-bootstrap.css" />
     <Content Include="Areas\AdminPanel\Assets\css\style-responsive.css" />
     <Content Include="Areas\AdminPanel\Assets\css\style.css" />
     <Content Include="Areas\AdminPanel\Assets\css\table-responsive.css" />
@@ -415,6 +406,7 @@
     <Content Include="Areas\AdminPanel\Assets\js\jquery.js" />
     <Content Include="Areas\AdminPanel\Assets\js\jquery.nicescroll.js" />
     <Content Include="Areas\AdminPanel\Assets\js\jquery.scrollTo.min.js" />
+    <Content Include="Areas\AdminPanel\Assets\js\jquery.select2.js" />
     <Content Include="Areas\AdminPanel\Assets\js\jquery.sparkline.js" />
     <Content Include="Areas\AdminPanel\Assets\js\jquery.tagsinput.js" />
     <Content Include="Areas\AdminPanel\Assets\js\jquery.ui.touch-punch.min.js" />
@@ -426,6 +418,7 @@
     <Content Include="Areas\AdminPanel\Assets\lineicons\index.html" />
     <Content Include="Areas\AdminPanel\Assets\lineicons\lte-ie7.js" />
     <Content Include="Areas\AdminPanel\Assets\lineicons\style.css" />
+    <Content Include="Assets\author.jpg" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\colors\orange.css" />
     <Content Include="Assets\css\customstyle.css" />
@@ -436,6 +429,9 @@
     <Content Include="Assets\css\owl-carousel\grabbing.png" />
     <Content Include="Assets\css\owl-carousel\owl.carousel.css" />
     <Content Include="Assets\css\owl-carousel\owl.theme.css" />
+    <Content Include="Assets\css\prism.css" />
+    <Content Include="Assets\css\screen.css" />
+    <Content Include="Assets\fonts\casper-icons.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\images\alcedo-atthis-881594.jpg" />
     <Content Include="Assets\images\almond-blossom-1229138.jpg" />
@@ -458,11 +454,260 @@
     <Content Include="Assets\images\woman-1129248.jpg" />
     <Content Include="Assets\images\young-woman-635249.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\index.js" />
+    <Content Include="Assets\js\jquery.fitvids.js" />
+    <Content Include="Assets\js\jquery.ghostHunter-init.js" />
+    <Content Include="Assets\js\jquery.ghostHunter.min.js" />
     <Content Include="Assets\js\jquery.min.js" />
     <Content Include="Assets\js\jQuery.style.switcher.js" />
     <Content Include="Assets\js\Login.js" />
     <Content Include="Assets\js\main.js" />
     <Content Include="Assets\js\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Assets\js\prism-components\prism-abap.js" />
+    <Content Include="Assets\js\prism-components\prism-abap.min.js" />
+    <Content Include="Assets\js\prism-components\prism-actionscript.js" />
+    <Content Include="Assets\js\prism-components\prism-actionscript.min.js" />
+    <Content Include="Assets\js\prism-components\prism-ada.js" />
+    <Content Include="Assets\js\prism-components\prism-ada.min.js" />
+    <Content Include="Assets\js\prism-components\prism-apacheconf.js" />
+    <Content Include="Assets\js\prism-components\prism-apacheconf.min.js" />
+    <Content Include="Assets\js\prism-components\prism-apl.js" />
+    <Content Include="Assets\js\prism-components\prism-apl.min.js" />
+    <Content Include="Assets\js\prism-components\prism-applescript.js" />
+    <Content Include="Assets\js\prism-components\prism-applescript.min.js" />
+    <Content Include="Assets\js\prism-components\prism-asciidoc.js" />
+    <Content Include="Assets\js\prism-components\prism-asciidoc.min.js" />
+    <Content Include="Assets\js\prism-components\prism-aspnet.js" />
+    <Content Include="Assets\js\prism-components\prism-aspnet.min.js" />
+    <Content Include="Assets\js\prism-components\prism-autohotkey.js" />
+    <Content Include="Assets\js\prism-components\prism-autohotkey.min.js" />
+    <Content Include="Assets\js\prism-components\prism-autoit.js" />
+    <Content Include="Assets\js\prism-components\prism-autoit.min.js" />
+    <Content Include="Assets\js\prism-components\prism-bash.js" />
+    <Content Include="Assets\js\prism-components\prism-bash.min.js" />
+    <Content Include="Assets\js\prism-components\prism-basic.js" />
+    <Content Include="Assets\js\prism-components\prism-basic.min.js" />
+    <Content Include="Assets\js\prism-components\prism-batch.js" />
+    <Content Include="Assets\js\prism-components\prism-batch.min.js" />
+    <Content Include="Assets\js\prism-components\prism-bison.js" />
+    <Content Include="Assets\js\prism-components\prism-bison.min.js" />
+    <Content Include="Assets\js\prism-components\prism-brainfuck.js" />
+    <Content Include="Assets\js\prism-components\prism-brainfuck.min.js" />
+    <Content Include="Assets\js\prism-components\prism-bro.js" />
+    <Content Include="Assets\js\prism-components\prism-bro.min.js" />
+    <Content Include="Assets\js\prism-components\prism-c.js" />
+    <Content Include="Assets\js\prism-components\prism-c.min.js" />
+    <Content Include="Assets\js\prism-components\prism-clike.js" />
+    <Content Include="Assets\js\prism-components\prism-clike.min.js" />
+    <Content Include="Assets\js\prism-components\prism-coffeescript.js" />
+    <Content Include="Assets\js\prism-components\prism-coffeescript.min.js" />
+    <Content Include="Assets\js\prism-components\prism-cpp.js" />
+    <Content Include="Assets\js\prism-components\prism-cpp.min.js" />
+    <Content Include="Assets\js\prism-components\prism-crystal.js" />
+    <Content Include="Assets\js\prism-components\prism-crystal.min.js" />
+    <Content Include="Assets\js\prism-components\prism-csharp.js" />
+    <Content Include="Assets\js\prism-components\prism-csharp.min.js" />
+    <Content Include="Assets\js\prism-components\prism-css-extras.js" />
+    <Content Include="Assets\js\prism-components\prism-css-extras.min.js" />
+    <Content Include="Assets\js\prism-components\prism-css.js" />
+    <Content Include="Assets\js\prism-components\prism-css.min.js" />
+    <Content Include="Assets\js\prism-components\prism-d.js" />
+    <Content Include="Assets\js\prism-components\prism-d.min.js" />
+    <Content Include="Assets\js\prism-components\prism-dart.js" />
+    <Content Include="Assets\js\prism-components\prism-dart.min.js" />
+    <Content Include="Assets\js\prism-components\prism-diff.js" />
+    <Content Include="Assets\js\prism-components\prism-diff.min.js" />
+    <Content Include="Assets\js\prism-components\prism-django.js" />
+    <Content Include="Assets\js\prism-components\prism-django.min.js" />
+    <Content Include="Assets\js\prism-components\prism-docker.js" />
+    <Content Include="Assets\js\prism-components\prism-docker.min.js" />
+    <Content Include="Assets\js\prism-components\prism-eiffel.js" />
+    <Content Include="Assets\js\prism-components\prism-eiffel.min.js" />
+    <Content Include="Assets\js\prism-components\prism-elixir.js" />
+    <Content Include="Assets\js\prism-components\prism-elixir.min.js" />
+    <Content Include="Assets\js\prism-components\prism-erlang.js" />
+    <Content Include="Assets\js\prism-components\prism-erlang.min.js" />
+    <Content Include="Assets\js\prism-components\prism-fortran.js" />
+    <Content Include="Assets\js\prism-components\prism-fortran.min.js" />
+    <Content Include="Assets\js\prism-components\prism-fsharp.js" />
+    <Content Include="Assets\js\prism-components\prism-fsharp.min.js" />
+    <Content Include="Assets\js\prism-components\prism-gherkin.js" />
+    <Content Include="Assets\js\prism-components\prism-gherkin.min.js" />
+    <Content Include="Assets\js\prism-components\prism-git.js" />
+    <Content Include="Assets\js\prism-components\prism-git.min.js" />
+    <Content Include="Assets\js\prism-components\prism-glsl.js" />
+    <Content Include="Assets\js\prism-components\prism-glsl.min.js" />
+    <Content Include="Assets\js\prism-components\prism-go.js" />
+    <Content Include="Assets\js\prism-components\prism-go.min.js" />
+    <Content Include="Assets\js\prism-components\prism-graphql.js" />
+    <Content Include="Assets\js\prism-components\prism-graphql.min.js" />
+    <Content Include="Assets\js\prism-components\prism-groovy.js" />
+    <Content Include="Assets\js\prism-components\prism-groovy.min.js" />
+    <Content Include="Assets\js\prism-components\prism-haml.js" />
+    <Content Include="Assets\js\prism-components\prism-haml.min.js" />
+    <Content Include="Assets\js\prism-components\prism-handlebars.js" />
+    <Content Include="Assets\js\prism-components\prism-handlebars.min.js" />
+    <Content Include="Assets\js\prism-components\prism-haskell.js" />
+    <Content Include="Assets\js\prism-components\prism-haskell.min.js" />
+    <Content Include="Assets\js\prism-components\prism-haxe.js" />
+    <Content Include="Assets\js\prism-components\prism-haxe.min.js" />
+    <Content Include="Assets\js\prism-components\prism-http.js" />
+    <Content Include="Assets\js\prism-components\prism-http.min.js" />
+    <Content Include="Assets\js\prism-components\prism-icon.js" />
+    <Content Include="Assets\js\prism-components\prism-icon.min.js" />
+    <Content Include="Assets\js\prism-components\prism-inform7.js" />
+    <Content Include="Assets\js\prism-components\prism-inform7.min.js" />
+    <Content Include="Assets\js\prism-components\prism-ini.js" />
+    <Content Include="Assets\js\prism-components\prism-ini.min.js" />
+    <Content Include="Assets\js\prism-components\prism-j.js" />
+    <Content Include="Assets\js\prism-components\prism-j.min.js" />
+    <Content Include="Assets\js\prism-components\prism-jade.js" />
+    <Content Include="Assets\js\prism-components\prism-jade.min.js" />
+    <Content Include="Assets\js\prism-components\prism-java.js" />
+    <Content Include="Assets\js\prism-components\prism-java.min.js" />
+    <Content Include="Assets\js\prism-components\prism-javascript.js" />
+    <Content Include="Assets\js\prism-components\prism-javascript.min.js" />
+    <Content Include="Assets\js\prism-components\prism-jolie.js" />
+    <Content Include="Assets\js\prism-components\prism-jolie.min.js" />
+    <Content Include="Assets\js\prism-components\prism-json.js" />
+    <Content Include="Assets\js\prism-components\prism-json.min.js" />
+    <Content Include="Assets\js\prism-components\prism-jsx.js" />
+    <Content Include="Assets\js\prism-components\prism-jsx.min.js" />
+    <Content Include="Assets\js\prism-components\prism-julia.js" />
+    <Content Include="Assets\js\prism-components\prism-julia.min.js" />
+    <Content Include="Assets\js\prism-components\prism-keyman.js" />
+    <Content Include="Assets\js\prism-components\prism-keyman.min.js" />
+    <Content Include="Assets\js\prism-components\prism-kotlin.js" />
+    <Content Include="Assets\js\prism-components\prism-kotlin.min.js" />
+    <Content Include="Assets\js\prism-components\prism-latex.js" />
+    <Content Include="Assets\js\prism-components\prism-latex.min.js" />
+    <Content Include="Assets\js\prism-components\prism-less.js" />
+    <Content Include="Assets\js\prism-components\prism-less.min.js" />
+    <Content Include="Assets\js\prism-components\prism-livescript.js" />
+    <Content Include="Assets\js\prism-components\prism-livescript.min.js" />
+    <Content Include="Assets\js\prism-components\prism-lolcode.js" />
+    <Content Include="Assets\js\prism-components\prism-lolcode.min.js" />
+    <Content Include="Assets\js\prism-components\prism-lua.js" />
+    <Content Include="Assets\js\prism-components\prism-lua.min.js" />
+    <Content Include="Assets\js\prism-components\prism-makefile.js" />
+    <Content Include="Assets\js\prism-components\prism-makefile.min.js" />
+    <Content Include="Assets\js\prism-components\prism-markdown.js" />
+    <Content Include="Assets\js\prism-components\prism-markdown.min.js" />
+    <Content Include="Assets\js\prism-components\prism-markup.js" />
+    <Content Include="Assets\js\prism-components\prism-markup.min.js" />
+    <Content Include="Assets\js\prism-components\prism-matlab.js" />
+    <Content Include="Assets\js\prism-components\prism-matlab.min.js" />
+    <Content Include="Assets\js\prism-components\prism-mel.js" />
+    <Content Include="Assets\js\prism-components\prism-mel.min.js" />
+    <Content Include="Assets\js\prism-components\prism-mizar.js" />
+    <Content Include="Assets\js\prism-components\prism-mizar.min.js" />
+    <Content Include="Assets\js\prism-components\prism-monkey.js" />
+    <Content Include="Assets\js\prism-components\prism-monkey.min.js" />
+    <Content Include="Assets\js\prism-components\prism-nasm.js" />
+    <Content Include="Assets\js\prism-components\prism-nasm.min.js" />
+    <Content Include="Assets\js\prism-components\prism-nginx.js" />
+    <Content Include="Assets\js\prism-components\prism-nginx.min.js" />
+    <Content Include="Assets\js\prism-components\prism-nim.js" />
+    <Content Include="Assets\js\prism-components\prism-nim.min.js" />
+    <Content Include="Assets\js\prism-components\prism-nix.js" />
+    <Content Include="Assets\js\prism-components\prism-nix.min.js" />
+    <Content Include="Assets\js\prism-components\prism-nsis.js" />
+    <Content Include="Assets\js\prism-components\prism-nsis.min.js" />
+    <Content Include="Assets\js\prism-components\prism-objectivec.js" />
+    <Content Include="Assets\js\prism-components\prism-objectivec.min.js" />
+    <Content Include="Assets\js\prism-components\prism-ocaml.js" />
+    <Content Include="Assets\js\prism-components\prism-ocaml.min.js" />
+    <Content Include="Assets\js\prism-components\prism-oz.js" />
+    <Content Include="Assets\js\prism-components\prism-oz.min.js" />
+    <Content Include="Assets\js\prism-components\prism-parigp.js" />
+    <Content Include="Assets\js\prism-components\prism-parigp.min.js" />
+    <Content Include="Assets\js\prism-components\prism-parser.js" />
+    <Content Include="Assets\js\prism-components\prism-parser.min.js" />
+    <Content Include="Assets\js\prism-components\prism-pascal.js" />
+    <Content Include="Assets\js\prism-components\prism-pascal.min.js" />
+    <Content Include="Assets\js\prism-components\prism-perl.js" />
+    <Content Include="Assets\js\prism-components\prism-perl.min.js" />
+    <Content Include="Assets\js\prism-components\prism-php-extras.js" />
+    <Content Include="Assets\js\prism-components\prism-php-extras.min.js" />
+    <Content Include="Assets\js\prism-components\prism-php.js" />
+    <Content Include="Assets\js\prism-components\prism-php.min.js" />
+    <Content Include="Assets\js\prism-components\prism-powershell.js" />
+    <Content Include="Assets\js\prism-components\prism-powershell.min.js" />
+    <Content Include="Assets\js\prism-components\prism-processing.js" />
+    <Content Include="Assets\js\prism-components\prism-processing.min.js" />
+    <Content Include="Assets\js\prism-components\prism-prolog.js" />
+    <Content Include="Assets\js\prism-components\prism-prolog.min.js" />
+    <Content Include="Assets\js\prism-components\prism-properties.js" />
+    <Content Include="Assets\js\prism-components\prism-properties.min.js" />
+    <Content Include="Assets\js\prism-components\prism-protobuf.js" />
+    <Content Include="Assets\js\prism-components\prism-protobuf.min.js" />
+    <Content Include="Assets\js\prism-components\prism-puppet.js" />
+    <Content Include="Assets\js\prism-components\prism-puppet.min.js" />
+    <Content Include="Assets\js\prism-components\prism-pure.js" />
+    <Content Include="Assets\js\prism-components\prism-pure.min.js" />
+    <Content Include="Assets\js\prism-components\prism-python.js" />
+    <Content Include="Assets\js\prism-components\prism-python.min.js" />
+    <Content Include="Assets\js\prism-components\prism-q.js" />
+    <Content Include="Assets\js\prism-components\prism-q.min.js" />
+    <Content Include="Assets\js\prism-components\prism-qore.js" />
+    <Content Include="Assets\js\prism-components\prism-qore.min.js" />
+    <Content Include="Assets\js\prism-components\prism-r.js" />
+    <Content Include="Assets\js\prism-components\prism-r.min.js" />
+    <Content Include="Assets\js\prism-components\prism-reason.js" />
+    <Content Include="Assets\js\prism-components\prism-reason.min.js" />
+    <Content Include="Assets\js\prism-components\prism-rest.js" />
+    <Content Include="Assets\js\prism-components\prism-rest.min.js" />
+    <Content Include="Assets\js\prism-components\prism-rip.js" />
+    <Content Include="Assets\js\prism-components\prism-rip.min.js" />
+    <Content Include="Assets\js\prism-components\prism-roboconf.js" />
+    <Content Include="Assets\js\prism-components\prism-roboconf.min.js" />
+    <Content Include="Assets\js\prism-components\prism-ruby.js" />
+    <Content Include="Assets\js\prism-components\prism-ruby.min.js" />
+    <Content Include="Assets\js\prism-components\prism-rust.js" />
+    <Content Include="Assets\js\prism-components\prism-rust.min.js" />
+    <Content Include="Assets\js\prism-components\prism-sas.js" />
+    <Content Include="Assets\js\prism-components\prism-sas.min.js" />
+    <Content Include="Assets\js\prism-components\prism-sass.js" />
+    <Content Include="Assets\js\prism-components\prism-sass.min.js" />
+    <Content Include="Assets\js\prism-components\prism-scala.js" />
+    <Content Include="Assets\js\prism-components\prism-scala.min.js" />
+    <Content Include="Assets\js\prism-components\prism-scheme.js" />
+    <Content Include="Assets\js\prism-components\prism-scheme.min.js" />
+    <Content Include="Assets\js\prism-components\prism-scss.js" />
+    <Content Include="Assets\js\prism-components\prism-scss.min.js" />
+    <Content Include="Assets\js\prism-components\prism-smalltalk.js" />
+    <Content Include="Assets\js\prism-components\prism-smalltalk.min.js" />
+    <Content Include="Assets\js\prism-components\prism-smarty.js" />
+    <Content Include="Assets\js\prism-components\prism-smarty.min.js" />
+    <Content Include="Assets\js\prism-components\prism-sql.js" />
+    <Content Include="Assets\js\prism-components\prism-sql.min.js" />
+    <Content Include="Assets\js\prism-components\prism-stylus.js" />
+    <Content Include="Assets\js\prism-components\prism-stylus.min.js" />
+    <Content Include="Assets\js\prism-components\prism-swift.js" />
+    <Content Include="Assets\js\prism-components\prism-swift.min.js" />
+    <Content Include="Assets\js\prism-components\prism-tcl.js" />
+    <Content Include="Assets\js\prism-components\prism-tcl.min.js" />
+    <Content Include="Assets\js\prism-components\prism-textile.js" />
+    <Content Include="Assets\js\prism-components\prism-textile.min.js" />
+    <Content Include="Assets\js\prism-components\prism-twig.js" />
+    <Content Include="Assets\js\prism-components\prism-twig.min.js" />
+    <Content Include="Assets\js\prism-components\prism-typescript.js" />
+    <Content Include="Assets\js\prism-components\prism-typescript.min.js" />
+    <Content Include="Assets\js\prism-components\prism-verilog.js" />
+    <Content Include="Assets\js\prism-components\prism-verilog.min.js" />
+    <Content Include="Assets\js\prism-components\prism-vhdl.js" />
+    <Content Include="Assets\js\prism-components\prism-vhdl.min.js" />
+    <Content Include="Assets\js\prism-components\prism-vim.js" />
+    <Content Include="Assets\js\prism-components\prism-vim.min.js" />
+    <Content Include="Assets\js\prism-components\prism-wiki.js" />
+    <Content Include="Assets\js\prism-components\prism-wiki.min.js" />
+    <Content Include="Assets\js\prism-components\prism-xojo.js" />
+    <Content Include="Assets\js\prism-components\prism-xojo.min.js" />
+    <Content Include="Assets\js\prism-components\prism-yaml.js" />
+    <Content Include="Assets\js\prism-components\prism-yaml.min.js" />
+    <Content Include="Assets\js\prism-loader.js" />
+    <Content Include="Assets\js\prism.js" />
+    <Content Include="Assets\pblogo.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
@@ -480,6 +725,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PostsController.cs" />
     <Compile Include="Areas\AdminPanel\ViewModels\CreateUserVIewModel.cs" />
+    <Compile Include="Areas\AdminPanel\ViewModels\PostIndexViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePostsController.cs" />
@@ -498,7 +744,6 @@
     <Content Include="Areas\AdminPanel\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
@@ -535,9 +780,12 @@
     <Content Include="Areas\AdminPanel\Views\Auth\Users.cshtml" />
     <Content Include="Assets\scss\style.scss" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\HomePosts\Index.cshtml" />
-    <Content Include="Views\HomePosts\Post.cshtml" />
     <Content Include="Views\Account\resetpass.cshtml" />
+    <Content Include="Assets\fonts\casper-icons.eot" />
+    <Content Include="Assets\fonts\casper-icons.ttf" />
+    <Content Include="Assets\fonts\casper-icons.woff" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Post.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -603,8 +851,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

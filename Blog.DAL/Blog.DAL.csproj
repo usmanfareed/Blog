@@ -108,7 +108,6 @@
       <Name>Blog.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611161408424_InitialMigration.resx">
       <DependentUpon>201611161408424_InitialMigration.cs</DependentUpon>

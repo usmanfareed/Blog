@@ -27,6 +27,21 @@ namespace Blog.DAL.Repositories
         {
             return db.Posts.Any(x => x.Title == title);
         }
-       
+
+        public Post GetBySlug(string slug)
+        {
+            return db.Posts.SingleOrDefault(x => x.Slug == slug);
+        }
+
+        public void SavePost(Post post, List<Tag> list)
+        {
+            db.Posts.Add(post);
+            foreach (var tag in list)
+            {
+                db.Tags.Attach(tag);
+
+            }
+            db.SaveChanges();
+        }
     }
 }
