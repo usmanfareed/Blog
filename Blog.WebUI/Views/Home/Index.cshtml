@@ -12,19 +12,24 @@
             <section class="post-meta">
                 <span class="post-time">
                     <i class='fa fa-calendar'></i>
-                    <time class="timeago">@post.CreatedAt.ToShortTimeString()</time>
+                    @{
+                        TimeSpan timeDiff = DateTime.Now - post.CreatedAt;
+                        var days =timeDiff.Days <= 1 ?timeDiff.Days + " Day Ago" : timeDiff.Days + " Day's Ago";
+                    }
+                    <time class="timeago">@days</time>
                     <time class="fulldate">@post.CreatedAt.ToLongDateString()</time>
                 </span>
                 <br><i class='fa fa-tag'></i>
 
-                @*@foreach (var tag in post.Tags)
+                @foreach (var tag in post.Tags)
                 {
-                    <a href="/tag/@tag.Title/">@tag.Title</a>
-                }*@
-
+                    <a href="/tag/@tag.Title/">@tag.Title </a> 
+                }
+                <br><span class="fa fa-eye">&nbsp;
+                @post.Views</span>
             </section>
         </header>
-        <section class="post-content">
+        <section class="post-content" style="margin-top: -3%">
             @{
                 @Html.Raw(post.Content.Substring(0, 100) + "......")
                 

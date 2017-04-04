@@ -32,11 +32,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             this._postRepository = postRepository;
             _tagrepositoryBase = tagrepositoryBase;
         }
-        //private readonly IPostRepository _postRepository = AutoFacConfig.Container.Resolve<IPostRepository>();
-        //private readonly IRepositoryBase<Posts> _repositoryBase = AutoFacConfig.Container.Resolve<IRepositoryBase<Posts>>();
-
-        //_repositoryBase = new PostRepository(new BlogDbContext());
-         //IRepositoryBase<Posts> _repositoryBase = new PostRepository(new BlogDbContext());
+ 
 
         
              
@@ -70,7 +66,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
 
             }
-            Post newPost = new Post(){Content = post.Content,Title = post.Title,Slug = post.Slug};
+            Post newPost = new Post{Content = post.Content,Title = post.Title,Slug = post.Slug};
 
 
             newPost.Tags = new List<Tag>();
@@ -88,9 +84,9 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
                     var id = Convert.ToInt32(tag);
                     list.Add(alltags.Single(x => x.Id == id));
                 }
-                newPost.Tags.AddRange(list);
             }
-            
+            newPost.Tags.AddRange(list);
+
             _postRepository.SavePost(newPost, list);
  
             return RedirectToAction("Posts");
@@ -103,7 +99,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
         public ActionResult Posts()
         {
 
-           var posts = _repositoryBase.GetAll();
+            var posts = _repositoryBase.GetAll();
             return View("Posts",posts);
         }
 
@@ -139,22 +135,40 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
         public ActionResult Edit(int id)
         {
+            var tags = _tagrepositoryBase.GetAll().ToList();
+            ViewBag.tags = new MultiSelectList(tags, "Id", "Title");
             ViewBag.IsNew = false;
-            var post = _repositoryBase.GetById(id);
-            return View("Index",post);
+            var post = _postRepository.GetById(id);
+            var model = new PostIndexViewModel(){Tags = post.Tags,Content = post.Content,Slug = post.Slug,Id = post.Id,Title = post.Title};
+            model.SelectedTags = tags.Where(x=>model.Tags.Any(y=>y.Id == x.Id)).Select(x => x.Id.ToString()).ToArray();
+            return View("Index", model);
         }
          
         [Route("update")]
         [ValidateInput(false),ValidateAntiForgeryToken]
-        public ActionResult Update(Post post)
+        public ActionResult Update(PostIndexViewModel post)
         {
-            //dont use find when using auto mapper
-           //var updatePost = _repositoryBase.GetById(post.Id);
+            Post newPost = new Post {Id = post.Id,Content = post.Content, Title = post.Title, Slug = post.Slug};
+            newPost.Tags = new List<Tag>();
+            var alltags = _tagrepositoryBase.GetAll().ToList();
+            List<Tag> list = new List<Tag>();
+            foreach (var tag in post.SelectedTags)
+            {
 
-           //var updatePost =  new Posts();
-           //updatePost = Mapper.Map(post, updatePost);
-            _repositoryBase.Update(post);
-            _repositoryBase.Commit();
+                if (!tag.IsInt())
+                {
+                    newPost.Tags.Add(new Tag() { Title = tag, Active = true, CreatedOn = DateTime.Now });
+                }
+                else
+                {
+                    var id = Convert.ToInt32(tag);
+                    list.Add(alltags.Single(x => x.Id == id));
+                }
+            }
+            newPost.Tags.AddRange(list);
+
+            _postRepository.UpdatePost(newPost,list);
+
             return RedirectToAction("Posts");
         }
 

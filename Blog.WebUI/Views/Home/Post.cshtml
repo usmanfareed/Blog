@@ -9,13 +9,22 @@
         <section class="post-meta">
             <span class="post-time">
                 <i class='fa fa-calendar'></i>
-                <time class="timeago">@Model.CreatedAt.ToShortTimeString()</time>
-                <time class="fulldate">@Model.CreatedAt.ToLongDateString()</time></span>
+                @{
+                    TimeSpan timeDiff = DateTime.Now - Model.CreatedAt;
+                    var days = timeDiff.Days <= 1 ? timeDiff.Days + " Day Ago" : timeDiff.Days + " Day's Ago";
+                }
+                <time class="timeago">@days</time>
+                <time class="fulldate">@Model.CreatedAt.ToLongDateString()</time>
+            </span>
             <br><i class='fa fa-tag'></i>
-            @*<a href="/tag/modeling-practice/">modeling-practice</a>
-            .
-            <a href="/tag/modeling-practice/">C-Sharp</a>*@
+
+            @foreach (var tag in Model.Tags)
+            {
+                <a href="/tag/@tag.Title/">@tag.Title </a>
+            }
+
         </section>
+
     </header>
 
     <section class="post-content">

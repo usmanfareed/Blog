@@ -21,7 +21,7 @@ namespace Blog.WebUI.Controllers
         [Route("")]
         public ActionResult Index()
         {
-            var posts = _repositoryBase.GetAll().ToList();
+            var posts = _postRepository.GetAllPosts();
             return View ("Index",posts);
         }
 
@@ -29,7 +29,16 @@ namespace Blog.WebUI.Controllers
         public ActionResult Post(string slug)
         {
            var post= _postRepository.GetBySlug(slug);
+            _postRepository.UpdateViewCount(post.Id);
             return View(post);
         }
+        [Route("~/tag/{tag}")]
+
+        public ActionResult Tag(string tag)
+        {
+            var posts = _postRepository.GetAllPostsByTag(tag);
+            return View("Index", posts);
+        }
+
     }
 }
