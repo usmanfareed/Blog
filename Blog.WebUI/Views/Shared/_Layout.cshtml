@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -7,128 +6,174 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     @*{{!-- Document Settings --}}*@
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     @*{{!-- Page Meta --}}*@
     <title>Programmers Blog</title>
-    <meta name="description" content="" />
+    <meta name="description" content=""/>
 
     @*{{!-- Mobile Meta --}}*@
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     @*{{!-- Brand icon --}}*@
     <link rel="shortcut icon" href="@Url.Content("~/Assets/pblogo.png")">
-  
+
 
     @*{{!-- Styles'n'Scripts --}}*@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/css/screen.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/css/screen.css")"/>
 
 
     @*{{!-- Font Awesome --}}*@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     @*{{!-- Prism --}}*@
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/css/prism.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Assets/css/prism.css")"/>
 </head>
 
 <body class="home-template">
 
-    @*{{!-- Header --}}*@
-    <header id="site-header">
-        <div id="site-header-content" class="inner">
-            <a class="blog-logo" href="#"><img src="@Url.Content("~/Assets/pblogo.png")" alt="Pb" /></a>
-            <h2 class="blog-title"><a href="#">Programmers Blog</a></h2>
-            <h3 class="blog-description">Welcome to Programmers Blog</h3>
+@*{{!-- Header --}}*@
+<header id="site-header">
+    <div id="site-header-content" class="inner">
+        <a class="blog-logo" href="#">
+            <img src="@Url.Content("~/Assets/pblogo.png")" alt="Pb"/>
+        </a>
+        <h2 class="blog-title">
+            <a href="#">Programmers Blog</a>
+        </h2>
+        <h3 class="blog-description">Welcome to Programmers Blog</h3>
 
-            @*{{!-- Search --}}*@
-            <form id="search">
-                <input id="search-field" placeholder="Search" />
-            </form>
-        </div>
-    </header>
-
-    @*{{!-- Main Content --}}*@
-    <main>
-        <div class="main-inner">
-            <section id="search-results"></section>
-            @RenderBody()
-        </div>
-    </main>
-
-    @*{{!-- Sidebar --}}*@
-    <div id="sidebar">
-        <div id="sidebar-content" class="inner">
-            @*{{!-- The blog navigation links --}}*@
-            <div id="sidebar-links">
-                <div id="subscription-links">
-                    <i class='fa fa-tag'></i>
-                    <a href="/tag/modeling-practice/">modeling-practice</a>
-
-                    <a href="/tag/modeling-practice/">C-Sharp</a>
-                   
-                </div>
-                
-                <ul id="navigation">
-
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-navicon"></i>Top Posts
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-navicon"></i>Top Posts
-                        </a>
-                    </li>
-
-                    @*add navigation menu here*@
-                </ul>
-                <ul id="sidebar-external">
-                    <li><a href="https://example.com/"><i class="fa fa-github"></i></a></li>
-                    <li><a href="https://example.com/"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="https://example.com/"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://example.com/"><i class="fa fa-youtube-play"></i></a></li>
-                    <li><a href="https://example.com/"><i class="fa fa-steam"></i></a></li>
-                    <li><a href="https://example.com/"><i class="fa fa-lastfm"></i></a></li>
-                    <li><a target="_blank" href="mailto:example@example.com"><i class="fa fa-envelope"></i></a></li>
-                </ul>
-              
-            </div>
-
-            <footer class="site-footer">
-                <section class="copyright">&copy; <a href="">Programmers Blog</a> 2017 - 2018</section>
-                <section class="poweredby">
-                    <a href="https://github.com/dlecina/StayPuft">StayPuft</a>
-                </section>
-            </footer>
-        </div>
+        @*{{!-- Search --}}*@
+        <form id="search">
+            <input id="search-field" placeholder="Search"/>
+        </form>
     </div>
+</header>
 
-    @*{{!-- Scripts --}}*@
+@*{{!-- Main Content --}}*@
+<main>
+    <div class="main-inner">
+        <section id="search-results"></section>
+        @RenderBody()
+    </div>
+</main>
 
-    @*{{!-- jQuery --}}*@
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+@*{{!-- Sidebar --}}*@
+<div id="sidebar">
+    <div id="sidebar-content" class="inner">
+        @*{{!-- The blog navigation links --}}*@
+        <div class="panel panel-default">
+            <div class="panel-body" style="background-color: #344a5e">
+                <i class='fa fa-tags' style="color: white" ></i>
+
+                @{
+                    Html.RenderAction("PartialTags","Home");
+                }
 
 
-    @*{{!-- Fitvids makes video embeds responsive and awesome --}}*@
-    <script type="text/javascript" src="@Url.Content("~/Assets/js/jquery.fitvids.js")"></script>
 
-    @*{{!-- The main JavaScript file for Casper --}}*@
-    <script type="text/javascript" src="@Url.Content("~/Assets/js/index.js")"></script>
-    
-    @*{{!-- Prism --}}*@
-    <script type="text/javascript" src="@Url.Content("~/Assets/js/prism-loader.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Assets/js/prism.js")"></script>
-    <script type="text/javascript">Prism.plugins.autoloader.languages_path = "/Assets/js/prism-components/";</script>
+            </div>
+        </div>
+        <div id="sidebar-links">
+            @*<div id="subscription-links">*@
+               
+                
 
-    @*{{!-- ghostHunter --}}*@
-    <script src="@Url.Content("~/Assets/js/jquery.ghostHunter.min.js")"></script>
-    <script src="@Url.Content("~/Assets/js/jquery.ghostHunter-init.js")"></script>
+            @*</div>*@
+
+            @*<ul id="navigation">
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-navicon"></i>Top Posts
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-navicon"></i>Top Posts
+                    </a>
+                </li>
+
+                @*add navigation menu here
+            </ul>*@
+            <ul id="sidebar-external">
+                <li>
+                    <a href="https://example.com/">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://example.com/">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://example.com/">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://example.com/">
+                        <i class="fa fa-youtube-play"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://example.com/">
+                        <i class="fa fa-steam"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://example.com/">
+                        <i class="fa fa-lastfm"></i>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="mailto:example@example.com">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <footer class="site-footer">
+            <section class="copyright">&copy; <a href="">Programmers Blog</a> 2017 - 2018</section>
+            <section class="poweredby">
+                <a href="https://github.com/dlecina/StayPuft">StayPuft</a>
+            </section>
+        </footer>
+    </div>
+</div>
+
+@*{{!-- Scripts --}}*@
+
+@*{{!-- jQuery --}}*@
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+
+@*{{!-- Fitvids makes video embeds responsive and awesome --}}*@
+<script type="text/javascript" src="@Url.Content("~/Assets/js/jquery.fitvids.js")"></script>
+
+@*{{!-- The main JavaScript file for Casper --}}*@
+<script type="text/javascript" src="@Url.Content("~/Assets/js/index.js")"></script>
+
+@*{{!-- Prism --}}*@
+<script type="text/javascript" src="@Url.Content("~/Assets/js/prism-loader.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Assets/js/prism.js")"></script>
+<script type="text/javascript">Prism.plugins.autoloader.languages_path = "/Assets/js/prism-components/";</script>
+
+@*{{!-- ghostHunter --}}*@
+<script src="@Url.Content("~/Assets/js/jquery.ghostHunter.min.js")"></script>
+<script src="@Url.Content("~/Assets/js/jquery.ghostHunter-init.js")"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 </body>
 

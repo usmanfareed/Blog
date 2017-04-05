@@ -40,5 +40,12 @@ namespace Blog.WebUI.Controllers
             return View("Index", posts);
         }
 
+        [Route("~/PartialTags")]
+        public ActionResult PartialTags()
+        {
+            var tags = _postRepository.TopTags();
+            return View("_Tags", tags);
+        }
+
     }
 }

@@ -786,6 +786,7 @@
     <Content Include="Assets\fonts\casper-icons.woff" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Post.cshtml" />
+    <Content Include="Views\Shared\_Tags.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,11 @@
+﻿@model List<Blog.Models.Tag>
+@{
+    Layout = null;
+}
+
+@foreach (var tag in Model)
+{
+    <a class="btn btn-default btn-sm" href="/tag/@tag.Title/">@tag.Title</a>
+
+}
+

@@ -14,6 +14,7 @@ namespace Blog.Interfaces.IRepository
         void UpdateViewCount(int id);
         List<Post> GetAllPostsByTag(string tag);
         Post GetById(int id);
+        List<Tag> TopTags();
 
     }
 }
