@@ -85,7 +85,7 @@ namespace Blog.DAL.Repositories
 
         public List<Tag> TopTags()
         {
-            return db.Tags.OrderByDescending(x=>x.Posts.OrderByDescending(y=>y.Views).FirstOrDefault().Views).ToList();
+            return db.Tags.OrderByDescending(x=>x.Posts.Sum(y=>y.Views)).ToList();
         }
     }
 }
