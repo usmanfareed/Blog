@@ -466,9 +466,10 @@ button {
 
 /* Creates a responsive wrapper that makes our content scale nicely */
 .inner {
-    position: relative;
-    width: 80%;
+    position: center;
+    width: 70%;
     margin: 0 auto;
+    text-align: center;
 }
 
 /* Centres vertically yo. (IE8+) */
@@ -1578,11 +1579,10 @@ main
         float: left;
     }
 
-    .blog-logo img {
-        width: 80px;
-        height: auto;
-        margin: 0 8px 8px 0px;
-    }
+        .blog-logo img {
+            width: 40%;
+            height: auto;
+        }
 
     .blog-title {
         padding-top: 10px;
