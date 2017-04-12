@@ -9,7 +9,7 @@ namespace Blog.Interfaces.IRepository
         Post GetBySlug(string slug);
         void SavePost(Post post, List<Tag> list);
         void UpdatePost(Post post, List<Tag> list);
-
+        List<Post> SearchPosts(string search);
         List<Post> GetAllPosts();
         void UpdateViewCount(int id);
         List<Post> GetAllPostsByTag(string tag);

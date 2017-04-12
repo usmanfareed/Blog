@@ -59,7 +59,6 @@
 @*{{!-- Main Content --}}*@
 <main>
     <div class="main-inner">
-        <section id="search-results"></section>
         @RenderBody()
     </div>
 </main>
@@ -146,11 +145,11 @@
         <footer class="site-footer">
             <section class="copyright">&copy; <a href="">Programmers Blog</a> 2017 - 2018</section>
             <section class="poweredby">
-                <a href="https://github.com/dlecina/StayPuft">StayPuft</a>
+              Theme  <a href="https://github.com/dlecina/StayPuft">StayPuft</a>
             </section>
         </footer>
     </div>
-</div>
+    
 
 @*{{!-- Scripts --}}*@
 
@@ -172,8 +171,9 @@
 @*{{!-- ghostHunter --}}*@
 <script src="@Url.Content("~/Assets/js/jquery.ghostHunter.min.js")"></script>
 <script src="@Url.Content("~/Assets/js/jquery.ghostHunter-init.js")"></script>
+<script src="@Url.Content("~/Scripts/Search.js")"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script id="dsq-count-scr" src="//pbprogrammersblog.disqus.com/count.js" async></script>
 
 </body>
 

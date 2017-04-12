@@ -47,5 +47,15 @@ namespace Blog.WebUI.Controllers
             return View("_Tags", tags);
         }
 
+
+        [Route("~/search/{search}")]
+        public ActionResult SearchPosts(string search)
+        {
+            var posts = _postRepository.SearchPosts(search);
+            return View("Index", posts);
+        }
+
+
+
     }
 }

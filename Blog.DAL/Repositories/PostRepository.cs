@@ -83,6 +83,10 @@ namespace Blog.DAL.Repositories
             return db.Posts.Include("Tags").Where(x=>x.Tags.Any(y=>y.Title == tag)).OrderByDescending(x=>x.Views).ToList();
         }
 
+        public List<Post> SearchPosts(string search)
+        {
+            return db.Posts.Include("Tags").Where(x => x.Title.Contains(search)).ToList();
+        }
         public List<Tag> TopTags()
         {
             return db.Tags.OrderByDescending(x=>x.Posts.Sum(y=>y.Views)).ToList();

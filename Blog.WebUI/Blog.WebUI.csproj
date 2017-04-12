@@ -711,6 +711,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="Scripts\Search.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
