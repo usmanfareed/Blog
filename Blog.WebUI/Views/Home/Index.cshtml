@@ -14,7 +14,7 @@
                     <i class='fa fa-calendar'></i>
                     @{
                         TimeSpan timeDiff = DateTime.Now - post.CreatedAt;
-                        var days =timeDiff.Days <= 1 ?timeDiff.Days + " Day Ago" : timeDiff.Days + " Day's Ago";
+                        var days = timeDiff.Days <= 1 ? timeDiff.Days + " Day Ago" : timeDiff.Days + " Day's Ago";
                     }
                     <time class="timeago">@days</time>
                     <time class="fulldate">@post.CreatedAt.ToLongDateString()</time>

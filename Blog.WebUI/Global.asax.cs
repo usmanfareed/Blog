@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Caching;
+using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
 using Blog.WebUI.App_Start;
@@ -9,11 +11,15 @@ namespace Blog.WebUI
     {
         protected void Application_Start()
         {
-            Mapper.Initialize(c=>c.AddProfile<MappingProfile>());
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            SqlDependencyConfig.SqlDependecyStart();
         }
 
-
+        protected void Application_End()
+        {
+            SqlDependencyConfig.SqlDependecyStop();
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Blog.WebUI.Controllers
 
         [Route("~/")]
         [Route("")]
+        [OutputCache(Duration = int.MaxValue,SqlDependency = "BlogDatabase:Posts")]
         public ActionResult Index()
         {
             var posts = _postRepository.GetAllPosts();
