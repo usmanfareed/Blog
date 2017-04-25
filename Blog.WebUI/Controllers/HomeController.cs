@@ -18,13 +18,23 @@ namespace Blog.WebUI.Controllers
         }
 
         [Route("~/")]
-        [Route("")]
-        [OutputCache(Duration = int.MaxValue,SqlDependency = "BlogDatabase:Posts")]
         public ActionResult Index()
         {
-            var posts = _postRepository.GetAllPosts();
-            return View ("Index",posts);
+            return View ("Index");
         }
+
+        [Route("~/getposts")]
+        [OutputCache(Duration = int.MaxValue, SqlDependency = "BlogDatabase:Posts", VaryByParam = "*")]
+        public ActionResult GetPosts(int skipCount, int takeCount)
+        {
+           var posts = _postRepository.GetAllPosts().Skip(skipCount).Take(takeCount).ToList();
+            if (posts.Any())
+            {
+                return PartialView("Index", posts);
+            }
+            return null;
+        }
+
 
         [Route("~/{slug}")]
         public ActionResult Post(string slug)

@@ -58,7 +58,7 @@
 
 @*{{!-- Main Content --}}*@
 <main>
-    <div class="main-inner">
+    <div id="body" class="main-inner">
         @RenderBody()
     </div>
 </main>
@@ -154,8 +154,9 @@
 @*{{!-- Scripts --}}*@
 
 @*{{!-- jQuery --}}*@
+    
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 @*{{!-- Fitvids makes video embeds responsive and awesome --}}*@
 <script type="text/javascript" src="@Url.Content("~/Assets/js/jquery.fitvids.js")"></script>
@@ -173,8 +174,10 @@
 <script src="@Url.Content("~/Assets/js/jquery.ghostHunter-init.js")"></script>
 <script src="@Url.Content("~/Scripts/Search.js")"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 <script id="dsq-count-scr" src="//pbprogrammersblog.disqus.com/count.js" async></script>
 
+@RenderSection("Scripts",false)
 </body>
 
 </html>

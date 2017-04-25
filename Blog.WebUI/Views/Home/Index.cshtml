@@ -1,46 +1,108 @@
 ﻿@model List<Blog.Models.Post>
 
-@foreach (var post in Model)
+@if (Model != null)
 {
-    <article class="main-inner">
-        <header class="post-header">
+    foreach (var post in Model)
+    {
+        <article class="main-inner jscroll-next">
+            <header class="post-header">
 
-            <h1 class="post-title">
-                <a href="/@post.Slug">@post.Title</a>
-            </h1>
+                <h1 class="post-title">
+                    <a href="/@post.Slug">@post.Title</a>
+                </h1>
 
-            <section class="post-meta">
-                <span class="post-time">
-                    <i class='fa fa-calendar'></i>
-                    @{
-                        TimeSpan timeDiff = DateTime.Now - post.CreatedAt;
-                        var days = timeDiff.Days <= 1 ? timeDiff.Days + " Day Ago" : timeDiff.Days + " Day's Ago";
+                <section class="post-meta">
+                    <span class="post-time">
+                        <i class='fa fa-calendar'></i>
+                        @{
+                            TimeSpan timeDiff = DateTime.Now - post.CreatedAt;
+                            var days = timeDiff.Days <= 1 ? timeDiff.Days + " Day Ago" : timeDiff.Days + " Day's Ago";
+                        }
+                        <time class="timeago">@days</time>
+                        <time class="fulldate">@post.CreatedAt.ToLongDateString()</time>
+                    </span>
+                    <br><i class='fa fa-tag'></i>
+
+                    @foreach (var tag in post.Tags)
+                    {
+                        <a href="/tag/@tag.Title/">@tag.Title </a>
                     }
-                    <time class="timeago">@days</time>
-                    <time class="fulldate">@post.CreatedAt.ToLongDateString()</time>
-                </span>
-                <br><i class='fa fa-tag'></i>
-
-                @foreach (var tag in post.Tags)
-                {
-                    <a href="/tag/@tag.Title/">@tag.Title </a> 
+                    <br><span class="fa fa-eye">
+                        &nbsp;
+                        @post.Views
+                    </span>
+                </section>
+            </header>
+            <section class="post-content" style="margin-top: -3%">
+                @{
+                    @Html.Raw(post.Content.Substring(0, 100) + "......")
                 }
-                <br><span class="fa fa-eye">&nbsp;
-                @post.Views</span>
             </section>
-        </header>
-        <section class="post-content" style="margin-top: -3%">
-            @{
-                @Html.Raw(post.Content.Substring(0, 100) + "......")
-                
-            }
-        </section>
-        @*<footer class="post-indexfooter">
-            <i class="fa fa-comment-o"></i> <a href="@post.Slug#disqus_thread">Comments</a>
-        </footer>*@
-    </article>
+            @*<footer class="post-indexfooter">
+                    <i class="fa fa-comment-o"></i> <a href="@post.Slug#disqus_thread">Comments</a>
+                </footer>*@
+        </article>
+    }
 }
 
 
 @*{{!-- Previous/next page links - displayed on every page --}}
-{{pagination}}*@
+{{pagination}}*@@section Scripts
+                {
+                    <script>
+                        var hasMoreRecords = true;
+
+                        $(document).ready(function () {
+                            FetchDataFromServer();
+                            $(window).scroll(function() {
+                                if ($(window).scrollTop()+1 >= $(document).height() - $(window).height()) {
+                                    FetchDataFromServer();
+
+                                       
+                                    
+                                    
+                                }
+
+                            });
+                            
+                          
+                        });
+
+                        var skipCount = 0;
+                        var takeCount = 5; // return new 5 records
+
+                        function FetchDataFromServer() {
+                            if (!hasMoreRecords) {
+                                return;
+                            }
+                            $.ajax({
+                                url: '@Url.Action("GetPosts", "Home")',
+                                data: { skipCount: skipCount, takeCount: takeCount },
+                                datatype: 'html',
+                                success: function(data) {
+                                    if (data === "") {
+                                        hasMoreRecords = false; // signal no more records to display
+                                        
+                                    } else {
+                                        var item = $(data).hide().fadeIn(1500);
+                                        $("#body").append(item);
+                                        if (skipCount !== 0) {
+                                            $('html,body').animate({
+                                                scrollTop: $(window).scrollTop() + 500
+                                            }, 1000);
+                                        }
+                                        
+
+                                        skipCount += takeCount; // update for next iteration
+                                        
+                                    }
+                                },
+                                error: function() {
+                                    alert("error");
+                                }
+                            });
+                        }
+
+
+                    </script>
+                }
