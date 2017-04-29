@@ -14,6 +14,7 @@
                 <section class="post-meta">
                     <span class="post-time">
                         <i class='fa fa-calendar'></i>
+
                         @{
                             TimeSpan timeDiff = DateTime.Now - post.CreatedAt;
                             var days = timeDiff.Days <= 1 ? timeDiff.Days + " Day Ago" : timeDiff.Days + " Day's Ago";
@@ -22,7 +23,6 @@
                         <time class="fulldate">@post.CreatedAt.ToLongDateString()</time>
                     </span>
                     <br><i class='fa fa-tag'></i>
-
                     @foreach (var tag in post.Tags)
                     {
                         <a href="/tag/@tag.Title/">@tag.Title </a>

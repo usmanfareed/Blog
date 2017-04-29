@@ -110,6 +110,9 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NotFoundMvc, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NotFoundMvc.1.5.0\lib\net40\NotFoundMvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Web.DynamicData" />
@@ -431,6 +434,7 @@
     <Content Include="Assets\css\owl-carousel\owl.theme.css" />
     <Content Include="Assets\css\prism.css" />
     <Content Include="Assets\css\screen.css" />
+    <Content Include="Assets\css\style404.css" />
     <Content Include="Assets\fonts\casper-icons.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\images\alcedo-atthis-881594.jpg" />
@@ -453,6 +457,7 @@
     <Content Include="Assets\images\sunglasses-635269.jpg" />
     <Content Include="Assets\images\woman-1129248.jpg" />
     <Content Include="Assets\images\young-woman-635249.jpg" />
+    <Content Include="Assets\js\animation404.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\index.js" />
     <Content Include="Assets\js\jquery.fitvids.js" />
@@ -712,6 +717,7 @@
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\Search.js" />
+    <Content Include="Views\Shared\Error404.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -789,6 +795,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Post.cshtml" />
     <Content Include="Views\Shared\_Tags.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

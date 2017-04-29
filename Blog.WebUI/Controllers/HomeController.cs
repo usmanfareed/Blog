@@ -40,6 +40,10 @@ namespace Blog.WebUI.Controllers
         public ActionResult Post(string slug)
         {
            var post= _postRepository.GetBySlug(slug);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
             _postRepository.UpdateViewCount(post.Id);
             return View(post);
         }
