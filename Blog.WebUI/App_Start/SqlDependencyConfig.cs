@@ -16,6 +16,7 @@ namespace Blog.WebUI.App_Start
 
         public static void SqlDependecyStart()
         {
+            SqlCacheDependencyAdmin.EnableNotifications(connection);
             SqlCacheDependencyAdmin.EnableTableForNotifications(connection, "Posts");
             System.Data.SqlClient.SqlDependency.Start(connection);
         }

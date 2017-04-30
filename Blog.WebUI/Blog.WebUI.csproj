@@ -717,7 +717,6 @@
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\Search.js" />
-    <Content Include="Views\Shared\Error404.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -796,6 +795,11 @@
     <Content Include="Views\Home\Post.cshtml" />
     <Content Include="Views\Shared\_Tags.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Home\TagPosts.cshtml" />
+    <Content Include="Views\Shared\_Posts.cshtml" />
+    <Content Include="Views\Home\Archives.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

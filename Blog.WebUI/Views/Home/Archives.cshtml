@@ -1,0 +1,43 @@
+﻿@model Dictionary<int,IEnumerable<Blog.Models.Post>>
+@section SeoRender{
+
+    <title>Programmers Blog</title>
+    <meta name="keyword" content="csharp, mvc, c#, Dotnet, .net">
+    <meta name="description" content="Programmers Blog">
+    <meta name="author" content="Usman Fareed">
+}
+
+
+<header class="post-header">
+    <div class="post-title">
+
+        <h1>Blog Archives</h1>
+
+    </div>
+
+</header>
+
+<section class="post-content arclist" style="margin-top: 15%">
+    @foreach (var dict in Model)
+    {
+
+       <h2>@dict.Key</h2> 
+
+        <ul>
+            
+                    @foreach (var posts in dict.Value)
+                {
+                        <li><a href="/@posts.Slug">@posts.Title</a></li>
+                    }
+
+              
+        </ul>
+
+    }
+
+
+</section>
+
+
+
+

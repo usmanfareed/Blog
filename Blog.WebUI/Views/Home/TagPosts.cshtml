@@ -1,24 +1,20 @@
 ﻿@model List<Blog.Models.Post>
 @section SeoRender{
 
-    <title>Programmers Blog</title>
-    <meta name="keyword" content="csharp, mvc, c#, Dotnet, .net">
-    <meta name="description" content="Programmers Blog">
+    <title>Tag @ViewBag.tag</title>
+    <meta name="keyword" content="@ViewBag.tag">
+    <meta name="description" content="These Posts are about @ViewBag.tag">
     <meta name="author" content="Usman Fareed">
 }
 
 @Html.Partial("_Posts")
 
-
-@if (!(ViewBag.IsSearch ?? false))
-{
 @section Scripts
 {
     <script>
         var hasMoreRecords = true;
 
         $(document).ready(function() {
-            FetchDataFromServer();
             $(window).scroll(function() {
                 if ($(window).scrollTop() + 1 >= $(document).height() - $(window).height()) {
                     FetchDataFromServer();
@@ -31,7 +27,7 @@
 
         });
 
-        var skipCount = 0;
+        var skipCount = 5;
         var takeCount = 5; // return new 5 records
 
         function FetchDataFromServer() {
@@ -39,7 +35,8 @@
                 return;
             }
             $.ajax({
-                url: '@Url.Action("GetPosts", "Home")',
+                url: '@Url.Action("Tag", "Home")',
+                method: 'GET',
                 data: { skipCount: skipCount, takeCount: takeCount },
                 datatype: 'html',
                 success: function(data) {
@@ -69,4 +66,4 @@
 
 
     </script>
-}}
+}

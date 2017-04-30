@@ -1,10 +1,22 @@
-﻿@model Blog.Models.Post
+﻿@using System.Text.RegularExpressions
+@model Blog.Models.Post
+    
+@section SeoRender{
+    
+            <title>@Model.Title</title>
+            <meta name="keyword" content="@string.Join(", ", Model.Tags.Select(x => x.Title)) ">
+            <meta name="description" content="@Regex.Replace(Model.Content.Substring(0, Regex.Match(Model.Content, "\n").Index).Trim(),"[/<p>]","")">
+            <meta name="author" content="Usman Fareed">
+    }
+
 <article class="post">
 
     <header class="post-header">
-         <img class="post-cover" src="" alt="">
+        <div class="post-title">
+            
+            <h1 >@Model.Title</h1>
 
-        <h1 class="post-title">@Model.Title</h1>
+        </div>
         
         <section class="post-meta">
             <span class="post-time">

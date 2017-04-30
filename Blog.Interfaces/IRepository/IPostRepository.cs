@@ -15,6 +15,7 @@ namespace Blog.Interfaces.IRepository
         List<Post> GetAllPostsByTag(string tag);
         Post GetById(int id);
         List<Tag> TopTags();
+        Dictionary<int, IEnumerable<Post>> LoadArchives();
 
     }
 }

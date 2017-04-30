@@ -91,5 +91,10 @@ namespace Blog.DAL.Repositories
         {
             return db.Tags.OrderByDescending(x=>x.Posts.Sum(y=>y.Views)).ToList();
         }
+
+        public Dictionary<int,IEnumerable<Post>> LoadArchives()
+        {
+            return db.Posts.GroupBy(x => x.CreatedAt.Year).OrderByDescending(x => x.Key).ToDictionary(x => x.Key, x => x.OrderByDescending(z=>z.CreatedAt).Select(z=>z));
+        }
     }
 }

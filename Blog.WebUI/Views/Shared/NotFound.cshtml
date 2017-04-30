@@ -78,13 +78,13 @@
             var GOOG_FIXURL_SITE = '@Request.Url.GetLeftPart(UriPartial.Authority)'
         </script>
         <script type="text/javascript" src="//linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script>
-        <div class="go-home">
-            <a onclick="window.location = window.location.host" href="#">« Go Home</a>
-        </div>
+        
     </div>
     
 </section>
-
+<div class="go-home">
+    <a onclick="document.location.href='/'" href="#">« Go Home</a>
+</div>
 @* Error page must be longer than 512 bytes for IE and Chrome to show it. So add padding in case we're short. *@
 @(new string(' ', 512))
 <!-- Building Animation-->

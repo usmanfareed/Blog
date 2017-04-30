@@ -48,6 +48,8 @@ body, html {
     font-family: "Helvetica CY", "Nimbus Sans L", Arial, sans-serif;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 section {
@@ -106,6 +108,12 @@ input {
         border-radius: 5px;
         border-color: #ffffff;
     }
+
+
+.go-home {
+    text-align: center;
+}
+
 
 a {
     margin: 5em 0;

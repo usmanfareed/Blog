@@ -173,7 +173,7 @@ a {
 }
 
 a:hover {
-    color: red;
+    color: #FF6F02;
 }
 
 h1 a, h2 a, h3 a,
@@ -484,6 +484,40 @@ button {
    ========================================================================== */
 
 /* Yo-logo. Yolo-go. Upload one in ghost/settings/ */
+
+.navigationmenu {
+    text-decoration: none;
+    list-style: none;
+    margin-left: -50%;
+}
+
+    .navigationmenu a {
+        color: #FFFFFF;
+    }
+
+    .navigationmenu i {
+        color: #FFCC00;
+    }
+
+
+.arclist h2 {
+    text-decoration: none;
+    font-family: "Arial Bold";
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    color: #3D4456;
+}
+
+.arclist ul li {
+    text-decoration: none;
+    font-family: "Open Sans";
+}
+
+
+
+
+
 .blog-logo img {
     display: block;
     width: 100%;
@@ -575,10 +609,23 @@ button {
     margin:0;
     color: #222;
 }
+    .post-title h1 {
+        text-decoration: none;
+        font-family: "Arial Bold";
+        font-size: 3.0em;
+        /*line-height: 0 !important;*/
+        color: #22313F;
+        font-weight: bold;
+    }
 
-.post-title a {
-    text-decoration: none;
-}
+
+  .post-title a,h1 {
+        text-decoration: none;
+        font-family: "Arial Bold";
+        font-size: 1.8em;
+        /*color: #22313F;*/
+        font-weight: bold;
+    }
 
 .post-excerpt p {
     margin: 1.6rem 0 0 0;
@@ -795,17 +842,18 @@ main
     margin: 0 2px; /* good with no text */
 }
 
-#sidebar-links a:hover
-{
-    color: red;
-    
-}
 
-#sidebar-links a:hover i
-{
-    background: red;
-    color: white;
+#sidebar-links a:hover {
+    color: #FF6F02;
 }
+.sidebartags:hover {
+    background: #FF6F02 !important;
+    color: white !important;
+}
+    #sidebar-links a:hover i {
+        background: #FF6F02;
+        color: white;
+    }
 
 .post-indexfooter
 {
@@ -900,7 +948,7 @@ main
     overflow: hidden;
 }
 
-/* Keep images centered, and allow images wider than the main 
+/* Keep images cente#FF6F02, and allow images wider than the main 
    text column to break out. */
 .post-content img {
     display: block;
@@ -937,7 +985,7 @@ main
     text-decoration: none;
 }
 
-/* The author credit area after the post */
+/* The author c#FF6F02it area after the post */
 .post-footer {
     position: relative;
     margin: 4rem 0 4rem 0;
@@ -1472,12 +1520,12 @@ main
     color: white;
 }
 
-.poweredby .icon-ghost:before {
+.powe#FF6F02by .icon-ghost:before {
     font-size: 1rem;
     margin-right: 6px;
 }
 
-.poweredby .fa {
+.powe#FF6F02by .fa {
     font-size: 1rem;
     margin-left: 6px;
 }

@@ -604,10 +604,14 @@ aside{
 ================================================== */
 /* CONTENT
 ================================================== */
-.list-article:hover  .article-image{
-	-webkit-filter: sepia(40%); 
-	filter: sepia(40%);
-	}
+
+
+
+.list-article:hover .article-image {
+    -webkit-filter: sepia(40%);
+    filter: sepia(40%);
+}
+
 article.list-article{
 	min-height:374px;
 	width:100%;
@@ -845,13 +849,13 @@ article.post-article{
 	display: inline-block;
 	font-size:16px;
 }
-.post-title{
-	font-family: raleway,arial;
+.post-title {
     color: #5f5e5e;
     padding: 48px 24px 48px 24px;
     display: block;
     clear: both;
     margin: 0;
+    
 }
 .post-text{
 	padding: 0 24px 48px 24px;

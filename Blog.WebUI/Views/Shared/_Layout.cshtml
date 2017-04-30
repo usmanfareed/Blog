@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     @*{{!-- Page Meta --}}*@
+    @RenderSection("SeoRender", false)
+    
     <title>Programmers Blog</title>
     <meta name="description" content=""/>
 
@@ -53,6 +55,18 @@
         <form id="search">
             <input id="search-field" placeholder="Search"/>
         </form>
+        
+        
+        <ul class="navigationmenu">
+
+            <li>
+                <a href="@Url.Action("Archive","Home")">
+                    <i class="fa fa-arrow-right"></i> Archives
+                </a>
+            </li>
+
+
+        </ul>
     </div>
 </header>
 
@@ -65,90 +79,76 @@
 
 @*{{!-- Sidebar --}}*@
 <div id="sidebar">
+   
     <div id="sidebar-content" class="inner">
         @*{{!-- The blog navigation links --}}*@
         <h6 style="color: white">Top Tags</h6>
-            <div>
-                <i class='fa fa-tags' style="color: white" ></i>
+        <div>
+            <i class='fa fa-tags' style="color: #FFCC00"></i>
 
-                @{
-                    Html.RenderAction("PartialTags","Home");
-                }
+            @{
+                Html.RenderAction("PartialTags", "Home");
+            }
 
 
 
-            </div>
         </div>
-        <div id="sidebar-links">
-            @*<div id="subscription-links">*@
+    </div>
+    <div id="sidebar-links">
+        @*<div id="subscription-links">
                
                 
 
-            @*</div>*@
+            </div>*@
 
-            @*<ul id="navigation">
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-navicon"></i>Top Posts
-                    </a>
-                </li>
+        <ul id="sidebar-external">
+            <li>
+                <a href="https://example.com/">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.com/">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.com/">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.com/">
+                    <i class="fa fa-youtube-play"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.com/">
+                    <i class="fa fa-steam"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.com/">
+                    <i class="fa fa-lastfm"></i>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="mailto:example@example.com">
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </li>
+        </ul>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-navicon"></i>Top Posts
-                    </a>
-                </li>
-
-                @*add navigation menu here
-            </ul>*@
-            <ul id="sidebar-external">
-                <li>
-                    <a href="https://example.com/">
-                        <i class="fa fa-github"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://example.com/">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://example.com/">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://example.com/">
-                        <i class="fa fa-youtube-play"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://example.com/">
-                        <i class="fa fa-steam"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://example.com/">
-                        <i class="fa fa-lastfm"></i>
-                    </a>
-                </li>
-                <li>
-                    <a target="_blank" href="mailto:example@example.com">
-                        <i class="fa fa-envelope"></i>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
-        <footer class="site-footer">
-            <section class="copyright">&copy; <a href="">Programmers Blog</a> 2017 - 2018</section>
-            <section class="poweredby">
-              Theme  <a href="https://github.com/dlecina/StayPuft">StayPuft</a>
-            </section>
-        </footer>
     </div>
+
+    <footer class="site-footer">
+        <section class="copyright">&copy; <a href="">Programmers Blog</a> 2017 - 2018</section>
+        <section class="poweredby">
+            Theme <a href="https://github.com/dlecina/StayPuft">StayPuft</a>
+        </section>
+    </footer>
+</div>
     
 
 @*{{!-- Scripts --}}*@
