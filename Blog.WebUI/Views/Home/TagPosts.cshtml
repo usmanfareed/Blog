@@ -1,4 +1,6 @@
 ﻿@model List<Blog.Models.Post>
+    
+
 @section SeoRender{
 
     <title>Tag @ViewBag.tag</title>
@@ -6,7 +8,19 @@
     <meta name="description" content="These Posts are about @ViewBag.tag">
     <meta name="author" content="Usman Fareed">
 }
+@section HeadTitle
+{
+<div class="tag" style="text-align: center">
 
+    <h2>
+        <i class='fa fa-tags' style="color: #FF7000"></i>  @ViewBag.tag
+    </h2>
+
+
+</div>
+
+
+}
 @Html.Partial("_Posts")
 
 @section Scripts
@@ -29,9 +43,13 @@
 
         var skipCount = 5;
         var takeCount = 5; // return new 5 records
+        var currentrequest = false;
 
         function FetchDataFromServer() {
             if (!hasMoreRecords) {
+                return;
+            }
+            if (currentrequest) {
                 return;
             }
             $.ajax({
@@ -44,6 +62,7 @@
                         hasMoreRecords = false; // signal no more records to display
 
                     } else {
+                        currentrequest = false;
                         var item = $(data).hide().fadeIn(1500);
                         $("#body").append(item);
                         if (skipCount !== 0) {

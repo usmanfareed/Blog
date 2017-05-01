@@ -1,4 +1,4 @@
-﻿@model Dictionary<int,IEnumerable<Blog.Models.Post>>
+﻿@model Dictionary<int, IEnumerable<Blog.Models.Post>>
 @section SeoRender{
 
     <title>Programmers Blog</title>
@@ -20,24 +20,28 @@
 <section class="post-content arclist" style="margin-top: 15%">
     @foreach (var dict in Model)
     {
-
-       <h2>@dict.Key</h2> 
+        <h2>@dict.Key</h2>
 
         <ul>
-            
-                    @foreach (var posts in dict.Value)
-                {
-                        <li><a href="/@posts.Slug">@posts.Title</a></li>
-                    }
 
-              
+            @foreach (var posts in dict.Value)
+            {
+                <li>
+                    <a href="/@posts.Slug">
+                        @posts.Title 
+                    </a>
+                    <span>
+                        <i class="fa fa-comment-o"></i>
+                        <a href="@posts.Slug#disqus_thread">Comments</a>
+                    </span>
+                </li>
+               
+               
+            }
+
+
         </ul>
-
     }
 
 
 </section>
-
-
-
-

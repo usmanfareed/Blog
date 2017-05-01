@@ -43,11 +43,11 @@
 @*{{!-- Header --}}*@
 <header id="site-header">
     <div id="site-header-content" class="inner">
-        <a class="blog-logo" href="#">
+        <a class="blog-logo" onclick="document.location.href='/'" href="#" >
             <img src="@Url.Content("~/Assets/pblogo.png")" alt="Pb"/>
         </a>
         <h2 class="blog-title">
-            <a href="#">Programmers Blog</a>
+            <a onclick="window.location.href='/'" href="#" >Programmers Blog</a>
         </h2>
         <h3 class="blog-description">Welcome to Programmers Blog</h3>
 
@@ -72,6 +72,9 @@
 
 @*{{!-- Main Content --}}*@
 <main>
+    @RenderSection("HeadTitle", false)
+
+
     <div id="body" class="main-inner">
         @RenderBody()
     </div>
@@ -84,7 +87,7 @@
         @*{{!-- The blog navigation links --}}*@
         <h6 style="color: white">Top Tags</h6>
         <div>
-            <i class='fa fa-tags' style="color: #FFCC00"></i>
+            <i class='fa fa-tags' style="color: #FF7000"></i>
 
             @{
                 Html.RenderAction("PartialTags", "Home");

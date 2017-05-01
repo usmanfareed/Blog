@@ -7,10 +7,25 @@
     <meta name="author" content="Usman Fareed">
 }
 
+@if (ViewBag.Search != null)
+{
+@section HeadTitle
+{
+    <div class="tag" style="text-align: center">
+
+        <h2>
+            <i class='fa fa-search' style="color: #FF7000"></i> @ViewBag.Search
+        </h2>
+
+
+    </div>
+
+
+}}
 @Html.Partial("_Posts")
 
 
-@if (!(ViewBag.IsSearch ?? false))
+@if (!(ViewBag.Search != null ?? false))
 {
 @section Scripts
 {
@@ -33,11 +48,15 @@
 
         var skipCount = 0;
         var takeCount = 5; // return new 5 records
-
+        var currentrequest = false;
         function FetchDataFromServer() {
             if (!hasMoreRecords) {
                 return;
             }
+            if (currentrequest) {
+                return;
+            }
+            currentrequest = true;
             $.ajax({
                 url: '@Url.Action("GetPosts", "Home")',
                 data: { skipCount: skipCount, takeCount: takeCount },
@@ -47,6 +66,7 @@
                         hasMoreRecords = false; // signal no more records to display
 
                     } else {
+                        currentrequest = false;
                         var item = $(data).hide().fadeIn(1500);
                         $("#body").append(item);
                         if (skipCount !== 0) {
@@ -58,6 +78,7 @@
 
 
                         skipCount += takeCount; // update for next iteration
+                        Prism.highlightAll();
 
                     }
                 },

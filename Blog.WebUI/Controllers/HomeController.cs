@@ -81,12 +81,12 @@ namespace Blog.WebUI.Controllers
         }
 
 
-        [Route("~/search/{search}")]
-        public ActionResult SearchPosts(string search)
+        [Route("~/search/{*search}")]
+        public ActionResult SearchPosts(string search="")
         {
          var posts = _postRepository.SearchPosts(search);
 
-            ViewBag.IsSearch = true;
+            ViewBag.Search = search;
             return View("Index", posts);
 
         }

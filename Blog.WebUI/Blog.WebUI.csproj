@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +47,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -110,6 +114,9 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NotFoundMvc, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NotFoundMvc.1.5.0\lib\net40\NotFoundMvc.dll</HintPath>
     </Reference>
@@ -124,6 +131,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -131,6 +141,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -229,11 +242,119 @@
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\dialogs\codesnippet.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\icons\codesnippet.png" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\icons\hidpi\codesnippet.png" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ar.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\az.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\bg.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ca.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\cs.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\da.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\de-ch.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\de.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\el.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\en-gb.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\en.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\eo.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\es.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\et.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\eu.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\fa.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\fi.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\fr-ca.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\fr.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\gl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\he.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\hr.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\hu.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\id.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\it.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ja.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\km.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ko.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ku.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\lt.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\lv.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\nb.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\nl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\no.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\oc.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\pl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\pt-br.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\pt.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ro.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ru.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\sk.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\sl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\sq.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\sv.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\th.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\tr.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\tt.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\ug.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\uk.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\vi.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\zh-cn.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lang\zh.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\highlight.pack.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\arta.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\ascetic.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-dune.dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-dune.light.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-forest.dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-forest.light.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-heath.dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-heath.light.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-lakeside.dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-lakeside.light.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-seaside.dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\atelier-seaside.light.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\brown_paper.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\brown_papersq.png" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\default.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\docco.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\far.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\foundation.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\github.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\googlecode.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\idea.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\ir_black.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\magula.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\mono-blue.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\monokai.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\monokai_sublime.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\obsidian.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\paraiso.dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\paraiso.light.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\pojoaque.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\pojoaque.jpg" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\railscasts.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\rainbow.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\school_book.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\school_book.png" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\solarized_dark.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\solarized_light.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\sunburst.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\tomorrow-night-blue.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\tomorrow-night-bright.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\tomorrow-night-eighties.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\tomorrow-night.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\tomorrow.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\vs.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\xcode.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\styles\zenburn.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\plugin.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\samples\codesnippet.html" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\dialog\dialogDefinition.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\icons.png" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\icons_hidpi.png" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\image\dialogs\image.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\lineutils\dev\dnd.html" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\lineutils\dev\magicfinger.html" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\lineutils\plugin.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\link\dialogs\anchor.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\link\dialogs\link.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\link\images\anchor.png" />
@@ -243,6 +364,12 @@
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\magicline\images\icon-rtl.png" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\magicline\images\icon.png" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\prism\Creating and Editing Code Snippets.txt" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\prism\Installation Guide.txt" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\prism\lib\prism\prism_patched.min.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\prism\lib\prism\prism_patched.min.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\prism\LICENSE.txt" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\prism\plugin.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\scayt\dialogs\options.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
@@ -301,6 +428,67 @@
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widgetselection\plugin.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\assets\contents.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\assets\sample.jpg" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\assets\simplebox\contents.css" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\assets\simplebox\dialogs\simplebox.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\assets\simplebox\icons\simplebox.png" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\assets\simplebox\plugin.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\console.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\nestedwidgets.html" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\dev\widgetstyles.html" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\af.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\ar.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\az.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\bg.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\ca.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\cs.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\cy.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\da.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\de-ch.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\de.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\el.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\en-gb.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\en.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\eo.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\es.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\eu.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\fa.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\fi.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\fr.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\gl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\he.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\hr.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\hu.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\id.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\it.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\ja.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\km.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\ko.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\ku.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\lv.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\nb.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\nl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\no.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\oc.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\pl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\pt-br.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\pt.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\ru.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\sk.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\sl.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\sq.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\sv.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\tr.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\tt.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\ug.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\uk.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\vi.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\zh-cn.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\lang\zh.js" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\widget\plugin.js" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
     <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
@@ -722,6 +910,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SqlDependencyConfig.cs" />
@@ -795,6 +984,11 @@
     <Content Include="Views\Home\Post.cshtml" />
     <Content Include="Views\Shared\_Tags.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\CHANGES.md" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\LICENSE" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\README.md" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\codesnippet\lib\highlight\README.ru.md" />
+    <Content Include="Areas\AdminPanel\Assets\ckeditor\plugins\prism\README.md" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Home\TagPosts.cshtml" />
