@@ -53,16 +53,16 @@
         {{#author}}*@ 
 
         <figure class="author-image">
-            <a class="img" href="#" style="background-image: url(@Url.Content("~/Assets/author.jpg"))"><span class="hidden">Usman's Picture</span></a>
+            <a class="img" href="@Url.Action("AboutMe")" style="background-image: url(@Url.Content("~/Assets/author.jpg"))"><span class="hidden">Usman's Picture</span></a>
         </figure>
 
         <section class="author">
-            <h4><a href="#">Usman Fareed</a></h4>
+            <h4><a href="@Url.Action("AboutMe")">Usman Fareed</a></h4>
 
             @*<p>{{bio}}</p>*@
             <div class="author-meta">
                <span class="author-location icon-location">Pakistan</span>
-               <span class="author-link icon-link"><a href="#">About Me</a></span>
+               <span class="author-link icon-link"><a href="@Url.Action("AboutMe")">About Me</a></span>
             </div>
         </section>
 
@@ -70,18 +70,27 @@
         <section class="share">
             <h4>Share this post</h4>
             <div class="share-icons">
-                <a class="fa fa-twitter-square" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
-                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <a class="fa fa-twitter-square" href="https://twitter.com/intent/tweet?text=@Model.Title&amp;url="
+                   onclick="window.open(this.href + window.location, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="fa fa-facebook-square" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-                   onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <a class="fa fa-linkedin-square" href="https://www.linkedin.com/shareArticle?mini=true&amp;url="
+                   onclick="window.open(this.href + window.location, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">LinkedIn+</span>
+                </a>
+
+
+                <a class="fa fa-facebook-square" href="https://www.facebook.com/sharer/sharer.php?u="
+                   onclick="window.open(this.href + window.location, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="fa fa-google-plus-square" href="https://plus.google.com/share?url={{url absolute="true"}}"
-                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                <a class="fa fa-google-plus-square" href="https://plus.google.com/share?url="
+                   onclick="window.open(this.href + window.location, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
+                
+
+
             </div>
         </section>
 

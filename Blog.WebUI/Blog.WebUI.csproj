@@ -904,6 +904,9 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
+    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\Search.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -994,6 +997,8 @@
     <Content Include="Views\Home\TagPosts.cshtml" />
     <Content Include="Views\Shared\_Posts.cshtml" />
     <Content Include="Views\Home\Archives.cshtml" />
+    <Content Include="Views\Home\AboutMe.cshtml" />
+    <Content Include="Views\Home\ContactMe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

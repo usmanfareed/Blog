@@ -37,7 +37,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $(".returnImage").click("click", function (e) {
-            var urlImage = $(this).attr("val");
+            var urlImage = $(this).attr("data-url");
             window.opener.updateValue(urlImage);
             window.close();
         });

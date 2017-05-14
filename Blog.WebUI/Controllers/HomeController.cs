@@ -98,5 +98,16 @@ namespace Blog.WebUI.Controllers
             
         }
 
+        [Route("~/AboutMe")]
+        public ActionResult AboutMe()
+        {
+            return View();
+        }
+
+        [Route("~/ContactMe")]
+        public ActionResult ContactMe()
+        {
+            return View();
+        }
     }
 }
