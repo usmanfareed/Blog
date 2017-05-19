@@ -16,6 +16,7 @@ namespace Blog.Interfaces.IRepository
         Post GetById(int id);
         List<Tag> TopTags();
         Dictionary<int, IEnumerable<Post>> LoadArchives();
+        void UpdateStatus(int id, bool status);
 
     }
 }

@@ -53,8 +53,8 @@
                 return;
             }
             $.ajax({
-                url: '@Url.Action("Tag", "Home")',
-                method: 'GET',
+                url: '@Url.Action("Tag", "Home")/',
+                method: 'POST',
                 data: { skipCount: skipCount, takeCount: takeCount },
                 datatype: 'html',
                 success: function(data) {

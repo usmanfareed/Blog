@@ -35,7 +35,7 @@ namespace Blog.DAL.Repositories
         }
         public override Post GetById(int id)
         {
-            return db.Posts.Include("Tags").FirstOrDefault(x => x.Id == id);
+            return db.Posts.Include("Tags").Where(x=>x.IsActive).FirstOrDefault(x => x.Id == id);
         }
 
         public void SavePost(Post post, List<Tag> list)
@@ -70,7 +70,7 @@ namespace Blog.DAL.Repositories
 
         public List<Post> GetAllPosts()
         {
-          return  db.Posts.Include("Tags").OrderByDescending(x=>x.CreatedAt).ToList();
+          return  db.Posts.Include("Tags").Where(x=>x.IsActive).OrderByDescending(x=>x.CreatedAt).ToList();
         }
         
         public void UpdateViewCount(int id)
@@ -85,7 +85,7 @@ namespace Blog.DAL.Repositories
 
         public List<Post> SearchPosts(string search)
         {
-            return db.Posts.Include("Tags").Where(x => x.Title.Contains(search)).ToList();
+            return db.Posts.Include("Tags").Where(x => x.Title.Contains(search) && x.IsActive).ToList();
         }
         public List<Tag> TopTags()
         {
@@ -94,7 +94,17 @@ namespace Blog.DAL.Repositories
 
         public Dictionary<int,IEnumerable<Post>> LoadArchives()
         {
-            return db.Posts.GroupBy(x => x.CreatedAt.Year).OrderByDescending(x => x.Key).ToDictionary(x => x.Key, x => x.OrderByDescending(z=>z.CreatedAt).Select(z=>z));
+            return db.Posts.Where(x=>x.IsActive).GroupBy(x => x.CreatedAt.Year).OrderByDescending(x => x.Key).ToDictionary(x => x.Key, x => x.OrderByDescending(z=>z.CreatedAt).Select(z=>z));
         }
+
+
+        public void UpdateStatus(int id, bool status)
+        {
+           var data= db.Posts.Find(id);
+            if (data != null) data.IsActive = status;
+            db.SaveChanges();
+
+        }
+
     }
 }

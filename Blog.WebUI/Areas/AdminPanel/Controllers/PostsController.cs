@@ -120,11 +120,7 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
 
         public ActionResult Status(int id,bool status)
         {
-
-            var update = _repositoryBase.GetById(id);
-            update.IsActive = status;
-           _repositoryBase.Update(update);
-            _repositoryBase.Commit();
+            _postRepository.UpdateStatus(id,status);
            return RedirectToAction("Posts");
         }
 

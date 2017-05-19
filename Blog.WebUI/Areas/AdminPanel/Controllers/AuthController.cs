@@ -219,7 +219,6 @@ namespace Blog.WebUI.Areas.AdminPanel.Controllers
             if (HashPassword.CheckPassword(model.Login.Password, user.PasswordHash))
             {
                 FormsAuthentication.SetAuthCookie(user.UserName, rememberme);
-                //HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName,false);
                 HttpCookie cookie = FormsAuthentication.GetAuthCookie(user.UserName, rememberme);
                 cookie.Expires = DateTime.Now.AddMinutes(time);
                 System.Web.HttpContext.Current.Response.Cookies.Add(cookie);

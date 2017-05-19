@@ -60,6 +60,7 @@
             $.ajax({
                 url: '@Url.Action("GetPosts", "Home")',
                 data: { skipCount: skipCount, takeCount: takeCount },
+                method: 'POST',
                 datatype: 'html',
                 success: function(data) {
                     if (data === "") {
