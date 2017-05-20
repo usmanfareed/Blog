@@ -1,10 +1,17 @@
-﻿@model List<Blog.Models.Post>
+﻿@using Microsoft.Practices.ObjectBuilder2
+@model List<Blog.Models.Post>
 @section SeoRender{
-
+    
     <title>Programmers Blog</title>
-    <meta name="keyword" content="csharp, mvc, c#, Dotnet, .net">
-    <meta name="description" content="Programmers Blog">
+    <meta name="keywords" content="@if (Model != null)
+                                  {
+                                     @Html.Raw(string.Join(",", Model.Select(x => x.Tags.Select(y => y.Title).ToList()).SelectMany(z => z).Distinct()))
+                                  }">
     <meta name="author" content="Usman Fareed">
+    <meta name="description" content="Welcome to Programmers Blog here you will learn more about .Net technologies ">
+    <meta name="robots" content="index, nofollow">
+    <meta name="language" content="English">
+
 }
 
 @if (ViewBag.Search != null)
@@ -33,7 +40,7 @@
         var hasMoreRecords = true;
 
         $(document).ready(function() {
-            FetchDataFromServer();
+            //FetchDataFromServer();
             $(window).scroll(function() {
                 if ($(window).scrollTop() + 1 >= $(document).height() - $(window).height()) {
                     FetchDataFromServer();
@@ -46,7 +53,7 @@
 
         });
 
-        var skipCount = 0;
+        var skipCount = 5;
         var takeCount = 5; // return new 5 records
         var currentrequest = false;
         function FetchDataFromServer() {

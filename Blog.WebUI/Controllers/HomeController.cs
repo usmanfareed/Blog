@@ -17,22 +17,26 @@ namespace Blog.WebUI.Controllers
             this._postRepository = postRepository;
         }
 
-        [Route("~/")]
-        public ActionResult Index()
-        {
-            return View ("Index");
-        }
+       
 
+
+        [Route("~/")]
         [Route("~/getposts")]
         [OutputCache(Duration = int.MaxValue, SqlDependency = "BlogDatabase:Posts", VaryByParam = "*")]
-        public ActionResult GetPosts(int skipCount, int takeCount)
+        public ActionResult GetPosts(int skipCount=0, int takeCount=5)
         {
-           var posts = _postRepository.GetAllPosts().Skip(skipCount).Take(takeCount).ToList();
-            if (posts.Any())
+            var posts = _postRepository.GetAllPosts().Skip(skipCount).Take(takeCount).ToList();
+
+            if (Request.IsAjaxRequest())
             {
-                return PartialView("Index", posts);
+                if (posts.Any())
+                {
+                    return PartialView("Index", posts);
+                }
+                return null;
             }
-            return null;
+            return View("Index",posts);
+
         }
 
 
